@@ -6,12 +6,15 @@ function App() {
 
 
   return (
-    <>
-      <Router>
-        <Navbar />
-        <AppRouter />
-      </Router>
-    </>
+    <div className='relative min-h-screen sm:pt-3' id='sfondoGlobale'>
+      <div className='container mx-auto'>
+        <Router>
+          <Navbar />
+          <AppRouter />
+        </Router>
+      </div>
+    </div>
+
   )
 }
 
