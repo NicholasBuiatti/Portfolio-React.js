@@ -1,6 +1,8 @@
+ body {
+    font-family: 'Poppins', sans-serif;
+}
 
 #sfondoGlobale {
-
     background-image: url('./assets/Tech.jpg') ;
     background-size: cover;
     background-position: center;
