@@ -5,17 +5,17 @@ import './App.css';
 function App() {
 
 
-  return (
-    <div className='relative min-h-screen sm:pt-3' id='sfondoGlobale'>
-      <div className='container mx-auto'>
-        <Router>
-          <Navbar />
-          <AppRouter />
-        </Router>
-      </div>
-    </div>
+    return (
+        <div className='relative min-h-screen sm:pt-3' id='sfondoGlobale'>
+            <div className=''>
+                <Router>
+                    <Navbar />
+                    <AppRouter />
+                </Router>
+            </div>
+        </div>
 
-  )
+    )
 }
 
 export default App

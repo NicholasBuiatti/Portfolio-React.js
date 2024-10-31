@@ -14,7 +14,7 @@ const Navbar = () => {
     }
 
     return (
-        <>
+        <div className='container mx-auto'>
             <nav className="flex items-center justify-between sticky top-0 py-2 px-4 mb-4 sm:rounded-full text-white bg-sky-900 z-10">
                 {/* Bottone menu per mobile */}
                 <button className="sm:hidden" onClick={handleDropdown}>
@@ -65,7 +65,7 @@ const Navbar = () => {
             </nav>
 
 
-        </>
+        </div>
 
     )
 }

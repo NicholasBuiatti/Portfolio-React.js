@@ -3,7 +3,10 @@
 }
 
 #sfondoGlobale {
-    background-image: url('./assets/Tech.jpg') ;
-    background-size: cover;
-    background-position: center;
+    background-image: url('./assets/Sfocatura.jpg'), url('/NbPortfolioLogo.png') ;
+    background-size: cover, contain;
+    background-position: center, center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
 }
