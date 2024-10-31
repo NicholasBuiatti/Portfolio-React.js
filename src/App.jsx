@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar';
+import AppFooter from './components/AppFooter';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AppRouter from './AppRouter';
 import './App.css';
@@ -11,6 +12,7 @@ function App() {
                 <Router>
                     <Navbar />
                     <AppRouter />
+                    <AppFooter />
                 </Router>
             </div>
         </div>

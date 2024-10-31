@@ -16,8 +16,8 @@ const Jumbotron = () => {
                 <p className='text-center w-6/12 mt-6 mx-auto md:mx-0'>Benvenuto nel mio portfolio personale, creato per affinare le mie
                     competenze come Full Stack Web Developer.</p>
             </div>
-            <a href={cv} download={cv} className='absolute top-full left-2/4 -translate-y-2/4'>
-                <button className='text-3xl p-4 animate-pulse bg-orange-700 rounded-full'>CV</button>
+            <a href={cv} download={cv} className='absolute top-full left-2/4 -translate-x-2/4 -translate-y-2/4'>
+                <button className='text-3xl p-4 animate-pulse border-2 rounded-full'>CV</button>
             </a>
             <img src={Prof3} alt="Immagine-Profilo" className='w-5/12 min-w-96 mx-auto aspect-square object-contain rounded-full' />
 
