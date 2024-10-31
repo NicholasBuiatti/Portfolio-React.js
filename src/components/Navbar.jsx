@@ -15,7 +15,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="flex items-center justify-between sticky top-0 py-2 px-4 sm:rounded-full text-white bg-sky-900 z-10">
+            <nav className="flex items-center justify-between sticky top-0 py-2 px-4 mb-4 sm:rounded-full text-white bg-sky-900 z-10">
                 {/* Bottone menu per mobile */}
                 <button className="sm:hidden" onClick={handleDropdown}>
                     {dropdown ? <i className="fa-solid fa-x text-2xl"></i> : <i className="fa-solid fa-bars text-2xl"></i>}
@@ -39,7 +39,7 @@ const Navbar = () => {
 
                 )}
 
-                <h1 className="text-2xl md:text-4xl w-3/12 hidden md:block text-center">NB Portfolio</h1>
+                <h1 className="text-2xl md:text-4xl w-3/12 hidden lg:block">NB Portfolio</h1>
                 <ul className="hidden sm:flex w-9/12 md:w-6/12 justify-around">
                     {routes.map(route => (
                         route.id && (
