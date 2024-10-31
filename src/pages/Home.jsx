@@ -3,7 +3,10 @@ import Prof3 from '../assets/Prof3.png';
 import cv from '../assets/Nicholas Buiatti CV.pdf';
 const Home = () => {
     return (
-        <Jumbotron />
+        <>
+            <Jumbotron />
+            <Slides />
+        </>
     )
 }
 
@@ -21,6 +24,14 @@ const Jumbotron = () => {
             </a>
             <img src={Prof3} alt="Immagine-Profilo" className='w-5/12 min-w-96 mx-auto aspect-square object-contain rounded-full' />
 
+        </section>
+    )
+}
+
+const Slides = () => {
+    return (
+        <section className='container'>
+            <h1>ciao</h1>
         </section>
     )
 }
