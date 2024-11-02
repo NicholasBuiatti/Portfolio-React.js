@@ -8,13 +8,11 @@ function App() {
 
     return (
         <div className='relative min-h-screen sm:pt-3' id='sfondoGlobale'>
-            <div className=''>
-                <Router>
-                    <Navbar />
-                    <AppRouter />
-                    <AppFooter />
-                </Router>
-            </div>
+            <Router>
+                <Navbar />
+                <AppRouter />
+                <AppFooter />
+            </Router>
         </div>
 
     )

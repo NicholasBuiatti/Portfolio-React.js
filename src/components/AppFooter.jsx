@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 const AppFooter = () => {
     return (
-        <div className='block text-xs text-center sm:flex items-center px-6 py-8 text-white bg-black'>
+        <div className='block text-xs text-center sm:flex items-center px-6 py-8 mt-5 text-white bg-black'>
             <div className='sm:w-4/12 mb-3 md:mb-0 md:text-start'>
                 <p className='mb-2'><i className="fa-solid fa-envelope"></i> buiattinicholas@gmail.com</p>
                 <p><i className="fa-solid fa-phone"></i> 123-456789</p>

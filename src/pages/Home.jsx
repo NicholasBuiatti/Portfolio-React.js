@@ -1,4 +1,6 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios';
+
 import Prof3 from '../assets/Prof3.png';
 import cv from '../assets/Nicholas Buiatti CV.pdf';
 const Home = () => {
@@ -29,10 +31,42 @@ const Jumbotron = () => {
 }
 
 const Slides = () => {
+
+    const [favorite, setFavorite] = useState([])
+
+    const getFavorites = async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/projects/favorite');
+            setFavorite(response.data);
+            console.log(favorite);
+
+
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+
+    useEffect(() => {
+        getFavorites();
+    }, [])
+
     return (
-        <section className='container'>
-            <h1>ciao</h1>
-        </section>
+        <section className='relative container mx-auto mt-16'>
+            <h1 className='text-4xl text-white mb-4'>PROGETTI IN RILIEVO</h1>
+            <div className="flex justify-between px-10">
+                {favorite.projects.map(project => {
+                    return (
+                        < div key={project.id} className='bg-white' >
+                            <img src={project.img} alt="" />
+                            <h2>{project.name_project}</h2>
+                            <p><i className={project.type.icon}></i> {project.type.name}</p>
+                            <a href={project.git_URL}>Git URL</a>
+                        </div>
+                    )
+                })}
+            </div>
+        </section >
     )
 }
 
