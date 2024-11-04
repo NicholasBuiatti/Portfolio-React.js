@@ -3,7 +3,7 @@ import { routes } from './routes';
 
 const AppRouter = () => {
     let element = useRoutes(routes);
-    console.log('Elementi delle rotte:', element);
+    // console.log('Elementi delle rotte:', element);
     return element;
 }
 
