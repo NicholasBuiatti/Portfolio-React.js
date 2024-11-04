@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
+import Card from '../components/Card'
 
 import Prof3 from '../assets/Prof3.png';
 import cv from '../assets/Nicholas Buiatti CV.pdf';
@@ -76,8 +77,25 @@ const Slides = () => {
     return (
         <section className='relative container mx-auto mt-16'>
             <h1 className='text-4xl text-white mb-4'>PROGETTI IN RILIEVO</h1>
-            <div className="flex justify-between px-10">
-                <button onClick={previous} className='border-2'>Indietro</button>
+            <div className="flex justify-between flex-wrap px-10">
+
+                <button onClick={previous} type="button" className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-700 hover:bg-sky-900">
+                        <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                        </svg>
+                        <span className="sr-only">Previous</span>
+                    </span>
+                </button>
+                <button onClick={() => next()} type="button" className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-700 hover:bg-sky-900">
+                        <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                        </svg>
+                        <span className="sr-only">Next</span>
+                    </span>
+                </button>
+
                 {isLoading ?
                     <div className="text-center">
                         <div role="status">
@@ -91,29 +109,21 @@ const Slides = () => {
                     :
                     favorite.slice(start, end).map((project) => {
                         return (
-                            <Card key={project.id} project={project} />
+                            <div key={project.id} className='w-full md:w-4/12 p-4'>
+                                <Card project={project} />
+
+                            </div>
 
                         )
                     })
                 }
-                <button onClick={() => next()} className='border-2'>Avanti</button>
+
             </div>
-            <pre>{JSON.stringify(favorite.projects, null, 2)}</pre>
+
         </section >
     )
 }
 
-const Card = ({ project }) => {
-    const { img, name_project, git_URL, type } = project;  // Destrutturazione di project
 
-    return (
-        <div className='bg-white rounded-xl mx-5'>
-            <img src={img} alt={name_project} className='object-contain' />
-            <h2>{name_project}</h2>
-            <p><i className={type.icon}></i> {type.name}</p>
-            <a href={git_URL} target="_blank" rel="noopener noreferrer">Git URL</a>
-        </div>
-    );
-};
 
 export default Home
