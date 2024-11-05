@@ -5,8 +5,17 @@ import axios from 'axios';
 const ProjectDetail = () => {
     const { slug } = useParams(); // Ottieni lo slug dall'URL
     const [project, setProject] = useState([]);
-    const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false)
+
+    const [isOpen, setIsOpen] = useState(0);
+
+    const handleMouseEnter = (index) => {
+        setIsOpen(index);
+    };
+
+    const handleMouseLeave = () => {
+        setIsOpen(null);
+    };
 
     // Esegui la chiamata API per recuperare i dettagli del progetto
     const getDetails = async () => {
@@ -17,7 +26,7 @@ const ProjectDetail = () => {
             setProject(response.data.project);
             setIsLoading(false)
         } catch (err) {
-            setError(err.message);
+            console.log(err);
         }
     };
 
@@ -34,7 +43,7 @@ const ProjectDetail = () => {
 
     return (
 
-        <div className="h-screen bg-black bg-opacity-50 text-white mx-5 shadow-2xl rounded-2xl overflow-hidden flex flex-wrap">
+        <div className="min-h-screen bg-black bg-opacity-50 text-white mx-5 shadow-2xl rounded-2xl flex flex-wrap">
             {
                 isLoading ?
                     <div className="mx-auto self-center">
@@ -48,11 +57,11 @@ const ProjectDetail = () => {
                     :
                     <>
                         <div className="lg:w-6/12">
-                            <img src={project.img} className="object-cover h-full w-full" alt={project.name_project} />
+                            <img src={project.img} className="rounded-2xl object-cover h-full w-full" alt={project.name_project} />
                         </div>
                         <div className="lg:w-6/12 p-5 flex flex-col justify-between">
                             <div>
-                                <h1 className="text-5xl font-bold mb-4">{project.name_project}</h1>
+                                <h1 className="text-2xl md:text-5xl font-bold mb-4">{project.name_project}</h1>
                                 <p className="mb-4">{project.description}</p>
                                 <p className="mb-2"><strong>Creazione:</strong> {formatDate(project.date)}</p>
                                 <p className="mb-2"><strong>Tipologia:</strong> {project.type ? project.type.name : 'N/A'}</p>
@@ -61,11 +70,22 @@ const ProjectDetail = () => {
                                     <strong>Linguaggi usati:</strong>
                                     <ul className="list-disc list-inside mt-2">
                                         {project.languages ?
-                                            project.languages.map((language) => (
-                                                <li key={language.id} className="text-gray-300">{language.name}</li>
+                                            project.languages.map((language, index) => (
+                                                <li key={language.id} className="text-gray-300 relative">
+                                                    <span onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave} className="cursor-pointer">
+                                                        {language.name}
+                                                    </span>
+                                                    {/* Elemento flottante per questo linguaggio */}
+                                                    {isOpen === index && (
+                                                        <div className="absolute text-black p-3 rounded-xl shadow-md z-10 bg-slate-300">
+                                                            {language.description}
+                                                        </div>
+                                                    )}
+                                                </li>
                                             ))
                                             : 'N/A'
                                         }
+
                                     </ul>
                                 </div>
                             </div>

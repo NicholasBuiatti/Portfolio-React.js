@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { routes } from '../routes';
 import { useState } from 'react';
 const Navbar = () => {
     const [dropdown, setDropdown] = useState(false);
+    const location = useLocation();
+    console.log(location);
 
     const handleDropdown = () => {
         if (!dropdown) {
@@ -10,7 +12,6 @@ const Navbar = () => {
         } else {
             setDropdown(false);
         }
-        console.log(dropdown);
     }
 
     return (
@@ -28,7 +29,7 @@ const Navbar = () => {
                             {routes.map(route => (
                                 route.id && (
                                     <li key={route.id}>
-                                        <Link to={route.path} onClick={() => setDropdown(false)} className="block py-2 px-4 hover:bg-sky-700 rounded-md">
+                                        <Link to={route.path} onClick={() => setDropdown(false)} className={`text-center block py-2 px-4 hover:bg-sky-700 ${location.pathname === route.path ? 'bg-black/[.50] text-white text-xl underline' : ''}`}>
                                             {route.label}
                                         </Link>
                                     </li>
@@ -44,7 +45,7 @@ const Navbar = () => {
                     {routes.map(route => (
                         route.id && (
                             <li key={route.id} className="px-2">
-                                <Link to={route.path} className="hover:underline">
+                                <Link to={route.path} className={`hover:underline  ${location.pathname === route.path ? 'text-2xl underline' : ''}`}>
                                     {route.label}
                                 </Link>
                             </li>

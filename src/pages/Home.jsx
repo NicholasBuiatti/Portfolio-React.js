@@ -15,16 +15,18 @@ const Home = () => {
 
 const Jumbotron = () => {
     return (
-        <section className='relative block md:flex items-center text-white bg-black/[.54]'>
+        <section className='relative block md:flex items-center justify-center text-white bg-black/[.54]'>
             <div className='py-8 px-5 md:pl-24 text-center md:w-6/12'>
-                <h1 className='text-2xl mb-6'>Jr. Full Stack Web Developer</h1>
-                <h2 className='text-8xl md:text-start'>NICHOLAS BUIATTI</h2>
+                <h1 className='text-xl lg:text-2xl mb-6'>Jr. Full Stack Web Developer</h1>
+                <h2 className='text-6xl lg:text-8xl md:text-start'>NICHOLAS BUIATTI</h2>
                 <p className='text-center w-6/12 mt-6 mx-auto md:mx-0'>Benvenuto nel mio portfolio personale, creato per affinare le mie
                     competenze come Full Stack Web Developer.</p>
             </div>
-            <a href={cv} download={cv} className='absolute hover:scale-105 top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4'>
-                <button className='text-3xl p-4 animate-pulse border-2 rounded-full'>CV</button>
-            </a>
+            <div className='flex flex-col items-center md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2'>
+                <a href={cv} download={cv} className='hover:scale-105'>
+                    <button className='text-3xl p-4 animate-pulse border-2 rounded-full'>CV</button>
+                </a>
+            </div>
             <img src={Prof3} alt="Immagine-Profilo" className='w-5/12 min-w-96 mx-auto aspect-square object-contain rounded-full' />
 
         </section>
@@ -75,7 +77,7 @@ const Slides = () => {
 
 
     return (
-        <section className='relative container mx-auto mt-16'>
+        <section className='relative mx-auto mt-16'>
             <h1 className='text-4xl text-white mb-4 ms-5'>PROGETTI IN RILIEVO</h1>
             <div className="flex justify-between flex-wrap px-10">
 
