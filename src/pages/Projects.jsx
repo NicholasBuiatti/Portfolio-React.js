@@ -5,12 +5,13 @@ import Card from '../components/Card'
 const Projects = () => {
     const [projects, setProjects] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [page, setPage] = useState(1);
+    // const [page, setPage] = useState(1);
+    const [url, setUrl] = useState('http://127.0.0.1:8000/api/projects?page=1')
 
-    const getProjects = async () => {
+    const getProjects = async (url) => {
         setIsLoading(true)
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/projects?page=${page}`)
+            const response = await axios.get(url)
             setProjects(response.data.projects);
             setIsLoading(false);
 
@@ -23,9 +24,9 @@ const Projects = () => {
 
 
     useEffect(() => {
-        getProjects()
-        console.log(projects);
-    }, [page])
+        getProjects(url)
+        // console.log(projects);
+    }, [])
 
     return (
         <>
@@ -42,21 +43,24 @@ const Projects = () => {
                     </div>
                     :
                     <>
-                        <ul className="inline-flex -space-x-px text-sm">
+                        <ul className="flex justify-center md:justify-end p-5">
                             {projects.links && projects.links.map((page) => {
                                 return (
                                     <li key={page.label}>
-                                        <a href="#" onClick={() => setPage(page.label)} className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{page.label}</a>
+                                        <a href="#" onClick={() => getProjects(page.url)} className={`flex items-center justify-center px-3 h-8 ms-0 leading-tight border border-e-0 bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white ${page.active == true ? ' text-black bg-indigo-500' : ''}`}>
+                                            {page.label === "&laquo; Previous" ? "Previous" : page.label === "Next &raquo;" ? "Next" : page.label}
+                                        </a>
                                     </li>
                                 )
                             })
                             }
                         </ul>
+
                         <div className='flex justify-between flex-wrap p-6'>
                             {projects.data && projects.data.map((project) => {
                                 return (
                                     <div key={project.id} className='w-full md:w-6/12 lg:w-4/12 p-4'>
-                                        <Card project={project} width='' />
+                                        <Card project={project} />
                                     </div>
                                 )
 
