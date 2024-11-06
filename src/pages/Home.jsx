@@ -94,55 +94,53 @@ const Slides = () => {
                         </div>
                     </div>
                     ) : (
-                        <>
+                        <div className="relative w-full">
                             <button
                                 onClick={previous}
                                 type="button"
-                                className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                                data-carousel-prev>
-                                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-700 hover:bg-sky-900">
-                                    <svg
-                                        className="w-4 h-4 text-gray-800 rtl:rotate-180"
-                                        aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 6 10"
-                                    >
-                                        <path
-                                            stroke="currentColor"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M5 1 1 5l4 4"
-                                        />
-                                    </svg>
-                                    <span className="sr-only">Previous</span>
-                                </span>
+                                className="absolute right-1/2 md:top-1/2 transform translate-x-1/2 md:-translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-sky-700 hover:bg-sky-900"
+                                data-carousel-prev
+                            >
+                                <svg
+                                    className="w-4 h-4 text-gray-800 rotate-90"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 6 10"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M5 1 1 5l4 4"
+                                    />
+                                </svg>
+                                <span className="sr-only">Previous</span>
                             </button>
+
                             <button
                                 onClick={next}
                                 type="button"
-                                className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                className="absolute bottom-0 right-1/2 md:top-1/2 md:right-1 transform translate-x-1/2 md:-translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-sky-700 hover:bg-sky-900"
                                 data-carousel-next
                             >
-                                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-700 hover:bg-sky-900">
-                                    <svg
-                                        className="w-4 h-4 text-gray-800 rtl:rotate-180"
-                                        aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 6 10"
-                                    >
-                                        <path
-                                            stroke="currentColor"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="m1 9 4-4-4-4"
-                                        />
-                                    </svg>
-                                    <span className="sr-only">Next</span>
-                                </span>
+                                <svg
+                                    className="w-4 h-4 text-gray-800 rotate-90"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 6 10"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="m1 9 4-4-4-4"
+                                    />
+                                </svg>
+                                <span className="sr-only">Next</span>
                             </button>
 
                             <div className="flex flex-wrap justify-center">
@@ -152,7 +150,8 @@ const Slides = () => {
                                     </div>
                                 ))}
                             </div>
-                        </>
+                        </div>
+
 
                     )
 

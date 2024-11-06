@@ -1,13 +1,14 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const ProjectDetail = () => {
     const { slug } = useParams(); // Ottieni lo slug dall'URL
+    const navigate = useNavigate();
     const [project, setProject] = useState([]);
     const [isLoading, setIsLoading] = useState(false)
 
-    const [isOpen, setIsOpen] = useState(0);
+    const [isOpen, setIsOpen] = useState(null);
 
     const handleMouseEnter = (index) => {
         setIsOpen(index);
@@ -23,10 +24,15 @@ const ProjectDetail = () => {
         try {
             const response = await axios(`http://127.0.0.1:8000/api/projects/${slug}`);
 
+            if (!response.data.project) {
+                navigate('/error')
+            }
+
             setProject(response.data.project);
             setIsLoading(false)
         } catch (err) {
             console.log(err);
+            navigate('/error')
         }
     };
 
