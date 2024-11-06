@@ -98,11 +98,11 @@ const Slides = () => {
                             <button
                                 onClick={previous}
                                 type="button"
-                                className="absolute right-1/2 md:top-1/2 transform translate-x-1/2 md:-translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-sky-700 hover:bg-sky-900"
+                                className="absolute right-1/2 md:top-1/2 md:left-0 transform translate-x-1/2  md:-translate-x-1/2 md:-translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-sky-700 hover:bg-sky-900"
                                 data-carousel-prev
                             >
                                 <svg
-                                    className="w-4 h-4 text-gray-800 rotate-90"
+                                    className="w-4 h-4 text-gray-800 rotate-90 md:rotate-0"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -126,7 +126,7 @@ const Slides = () => {
                                 data-carousel-next
                             >
                                 <svg
-                                    className="w-4 h-4 text-gray-800 rotate-90"
+                                    className="w-4 h-4 text-gray-800 rotate-90 md:rotate-0"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"

@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactPng from '../assets/React.png'
 import HtmlPng from '../assets/Html.png'
 import CssPng from '../assets/Css.png'
