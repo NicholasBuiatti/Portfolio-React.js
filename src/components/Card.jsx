@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 const Card = ({ project }) => {
     console.log("Project data:", project);
     const { img, name_project, git_URL, slug, favorite, type } = project;  // Destrutturazione di project
-
+    const imageUrl = `http://localhost:8000/storage/${img}`;
 
     return (
 
         <div className="relative h-full overflow-hidden hover:border-2 hover:border-sky-700 bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700">
             <Link to={`/projects/${slug}`}>
-                <img src={img} className="rounded-t-lg" alt="" />
+                <img src={imageUrl} className="rounded-t-lg" alt="" />
             </Link>
             {
                 favorite == 1 ?

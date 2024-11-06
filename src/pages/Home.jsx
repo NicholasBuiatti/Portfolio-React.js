@@ -144,11 +144,14 @@ const Slides = () => {
                             </button>
 
                             <div className="flex flex-wrap justify-center">
-                                {favorite.slice(start, end).map((project) => (
-                                    <div key={project.id} className="w-full md:w-4/12 p-4">
-                                        <Card project={project} />
-                                    </div>
-                                ))}
+                                {favorite.length == 0 ?
+                                    <div className='text-white'>nessuna repo</div>
+                                    :
+                                    favorite.slice(start, end).map((project) => (
+                                        <div key={project.id} className="w-full md:w-4/12 p-4">
+                                            <Card project={project} />
+                                        </div>
+                                    ))}
                             </div>
                         </div>
 

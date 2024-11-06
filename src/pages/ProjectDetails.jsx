@@ -63,7 +63,7 @@ const ProjectDetail = () => {
                     :
                     <>
                         <div className="lg:w-6/12">
-                            <img src={project.img} className="rounded-2xl object-cover h-full w-full" alt={project.name_project} />
+                            <img src={`http://localhost:8000/storage/${project.img}`} className="rounded-2xl object-cover h-full w-full" alt={project.name_project} />
                         </div>
                         <div className="lg:w-6/12 p-5 flex flex-col justify-between">
                             <div>
