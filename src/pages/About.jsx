@@ -1,4 +1,14 @@
 import React from 'react';
+import ReactPng from '../assets/React.png'
+import HtmlPng from '../assets/Html.png'
+import CssPng from '../assets/Css.png'
+import JsPng from '../assets/JS.png'
+import PhpPng from '../assets/Php.png'
+import LaravelPng from '../assets/Laravel.png'
+import VuePng from '../assets/Vue.png'
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
 import './About.css';
 const About = () => {
     return (
@@ -26,9 +36,21 @@ const About = () => {
 
 const Languages = () => {
     return (
-        <>
-            qua ci va un carosello con i linguaggi
-        </>
+        <Swiper
+            spaceBetween={0}
+            slidesPerView={6}
+            loop={true}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
+            className="h-24"
+        >
+            <SwiperSlide className="h-full flex justify-center items-center"><img className='h-full w-auto object-contain' src={HtmlPng} alt="HTML" /></SwiperSlide>
+            <SwiperSlide className="h-full flex justify-center items-center"><img className='h-full w-auto object-contain' src={CssPng} alt="CSS" /></SwiperSlide>
+            <SwiperSlide className="h-full flex justify-center items-center"><img className='h-full w-auto object-contain' src={JsPng} alt="JavaScript" /></SwiperSlide>
+            <SwiperSlide className="h-full flex justify-center items-center"><img className='h-full w-auto object-contain' src={VuePng} alt="Vue" /></SwiperSlide>
+            <SwiperSlide className="h-full flex justify-center items-center"><img className='h-full w-auto object-contain' src={ReactPng} alt="React" /></SwiperSlide>
+            <SwiperSlide className="h-full flex justify-center items-center"><img className='h-full w-auto object-contain' src={PhpPng} alt="PHP" /></SwiperSlide>
+            <SwiperSlide className="h-full flex justify-center items-center"><img className='h-full w-auto object-contain' src={LaravelPng} alt="Laravel" /></SwiperSlide>
+        </Swiper>
     )
 }
 
