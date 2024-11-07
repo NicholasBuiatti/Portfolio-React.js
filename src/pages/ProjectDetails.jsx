@@ -49,7 +49,7 @@ const ProjectDetail = () => {
 
     return (
 
-        <div className="min-h-screen bg-black bg-opacity-50 text-white mx-5 shadow-2xl rounded-2xl flex flex-wrap">
+        <div className="min-h-screen bg-black bg-opacity-50 text-white mx-5 shadow-2xl rounded-2xl">
             {
                 isLoading ?
                     <div className="mx-auto self-center">
@@ -62,10 +62,10 @@ const ProjectDetail = () => {
                     </div>
                     :
                     <>
-                        <div className="lg:w-6/12">
+                        <div className="">
                             <img src={`http://localhost:8000/storage/${project.img}`} className="rounded-2xl object-cover h-full w-full" alt={project.name_project} />
                         </div>
-                        <div className="lg:w-6/12 p-5 flex flex-col justify-between">
+                        <div className="p-5 flex flex-col justify-between">
                             <div>
                                 <h1 className="text-2xl md:text-5xl font-bold mb-4">{project.name_project}</h1>
                                 <p className="mb-4">{project.description}</p>
