@@ -8,20 +8,20 @@ const Card = ({ project }) => {
 
     return (
 
-        <div className="relative h-full overflow-hidden hover:border-2 hover:border-sky-700 bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700">
+        <div className="h-full overflow-hidden hover:border-2 hover:border-sky-700 bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700">
             <Link to={`/projects/${slug}`}>
                 <img src={imageUrl} className="rounded-t-lg" alt="" />
             </Link>
-            {
-                favorite == 1 ?
-                    <div className='absolute bg-black/[.80] top-5 right-5 p-3 text-red-700 rounded-full'>
-                        <i className="fa-solid fa-heart text-2xl animate-pulse"></i>
-                    </div> : ''
-            }
 
-            <div className="p-5 flex flex-col justify-between text-center">
+            <div className="relative p-5 flex flex-col justify-between text-center">
+                {
+                    favorite == 1 ?
+                        <div className='absolute top-0 right-0 p-3 text-red-700 rounded-full'>
+                            <i className="fa-solid fa-heart text-2xl animate-pulse"></i>
+                        </div> : ''
+                }
                 <div className='md:h-32'>
-                    <Link to={`/projects/${slug}`}>
+                    <Link to={`/projects/${slug}`} className=''>
                         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{name_project}</h5>
                     </Link>
 

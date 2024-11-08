@@ -31,7 +31,9 @@ const ContactMe = () => {
             if (response.status === 200) {
                 console.log('Messaggio inviato con successo');
                 showSuccessAlert();
-                // Aggiungi eventuali azioni aggiuntive (es. mostrare un messaggio di successo)
+                setName('')
+                setEmail('')
+                setMessage('')
             } else {
                 console.error('Errore nell’invio del messaggio');
             }
