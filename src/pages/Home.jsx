@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios';
 import Card from '../components/Card'
 
-import Prof3 from '../assets/Prof3.png';
+import Prof3 from '../assets/ImgProfilo.png';
 import cv from '../assets/Nicholas Buiatti CV.pdf';
 const Home = () => {
     return (
