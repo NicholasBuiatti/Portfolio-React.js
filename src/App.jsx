@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import AppRouter from "./router/AppRouter";
@@ -10,11 +11,16 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="relative min-h-screen" id="sfondoGlobale">
+      <div className="relative min-h-screen">
         <Router>
-          <div className="bg-[#111] text-white">
+          <motion.div
+            className="bg-[#111] text-white"
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
             <Navbar />
-          </div>
+          </motion.div>
           <AppRouter />
           <div className="bg-[#F5F5F5]">
             <Footer />
