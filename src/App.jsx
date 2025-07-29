@@ -1,21 +1,28 @@
-import Navbar from './components/Navbar';
-import AppFooter from './components/AppFooter';
-import { BrowserRouter as Router } from 'react-router-dom';
-import AppRouter from './AppRouter';
-import './App.css';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import AppRouter from "./router/AppRouter";
+import Footer from "./components/Footer";
+import "./App.css";
+
+const queryClient = new QueryClient();
+
 function App() {
-
-
-    return (
-        <div className='relative min-h-screen sm:pt-3' id='sfondoGlobale'>
-            <Router>
-                <Navbar />
-                <AppRouter />
-                <AppFooter />
-            </Router>
-        </div>
-
-    )
+  return (
+    <QueryClientProvider client={queryClient}>
+      <div className="relative min-h-screen" id="sfondoGlobale">
+        <Router>
+          <div className="bg-[#111] text-white">
+            <Navbar />
+          </div>
+          <AppRouter />
+          <div className="bg-[#F5F5F5]">
+            <Footer />
+          </div>
+        </Router>
+      </div>
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;
