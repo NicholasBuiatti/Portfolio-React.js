@@ -11,8 +11,8 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="relative min-h-screen">
-        <Router>
+      <Router>
+        <div className="flex flex-col relative min-h-screen">
           <motion.div
             className="bg-[#111] text-white"
             initial={{ y: -100, opacity: 0 }}
@@ -21,12 +21,14 @@ function App() {
           >
             <Navbar />
           </motion.div>
-          <AppRouter />
-          <div className="bg-[#F5F5F5]">
+          <div className="flex-1 bg-gray-100">
+            <AppRouter />
+          </div>
+          <div className="bg-[#F5F5F5] items-end">
             <Footer />
           </div>
-        </Router>
-      </div>
+        </div>
+      </Router>
     </QueryClientProvider>
   );
 }

@@ -1,10 +1,12 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { routes } from "../router/routes";
 
 const AppFooter = () => {
   return (
-    <div className="py-12">
+    <div
+      className="py-12"
+      style={{ boxShadow: "0 -4px 6px -1px rgba(0, 0, 0, 0.1)" }}
+    >
       <div className="container mx-auto">
         <div className="flex text-gray-400">
           <div className="w-4/12">
