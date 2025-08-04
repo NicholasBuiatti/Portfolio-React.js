@@ -1,5 +1,6 @@
 import Card from "../components/Card";
 import { useStarProjects } from "../features/projects/hooks";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Prof3 from "../assets/ImgProfilo.png";
 import cv from "../assets/Nicholas Buiatti CV.pdf";
@@ -35,6 +36,8 @@ const Jumbotron = () => {
   );
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////DA SISTEMARE
+
 const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
   const containerRef = useRef(null);
   const [divider, setDivider] = useState(50);
@@ -42,17 +45,27 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
   const handleMove = (e) => {
     const rect = containerRef.current.getBoundingClientRect();
     const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
-    const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    const percent = Math.max(0, Math.min(100, 100 - (x / rect.width) * 100));
     setDivider(percent);
   };
 
+  const getTranslate = (divider) => {
+    const maxShift = 20; // movimento massimo in px
+    return ((divider - 50) / 50) * maxShift;
+  };
+
   return (
-    <div
+    <motion.div
       ref={containerRef}
       className="relative w-fit h-fit select-none mx-auto"
       onMouseMove={handleMove}
       onTouchMove={handleMove}
-      style={{ userSelect: "none", touchAction: "none" }}
+      animate={{ x: getTranslate(divider) }}
+      transition={{ type: "spring", stiffness: 120, damping: 20 }}
+      style={{
+        userSelect: "none",
+        touchAction: "none",
+      }}
     >
       {/* Immagine sotto: sempre visibile */}
       <img
@@ -72,13 +85,36 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
           top: 0,
           left: 0,
           clipPath: `inset(0 0 0 ${divider}%)`,
+          transition: "clip-path 2s cubic-bezier(0.4,0,0.2,1)",
         }}
       />
+      <div className="absolute top-0 left-0 right-0 w-full h-full z-100">
+        <div className="flex justify-between items-center h-full">
+          <h2
+            className=""
+            style={{
+              opacity: divider / 100,
+              transition: "opacity 0.2s",
+            }}
+          >
+            Back-End
+          </h2>
+          <h2
+            className=""
+            style={{
+              opacity: 1 - divider / 100,
+              transition: "opacity 0.2s",
+            }}
+          >
+            Front-End
+          </h2>
+        </div>
+      </div>
       <div
-        className="absolute top-0 h-full border-l-2 border-sky-500 pointer-events-none"
+        className="absolute top-0 h-full pointer-events-none"
         style={{ left: `${divider}%` }}
       />
-    </div>
+    </motion.div>
   );
 };
 
