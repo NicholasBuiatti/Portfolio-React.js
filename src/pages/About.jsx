@@ -1,3 +1,6 @@
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+
 import ReactPng from "../assets/React.png";
 import HtmlPng from "../assets/Html.png";
 import CssPng from "../assets/Css.png";
@@ -6,9 +9,6 @@ import PhpPng from "../assets/Php.png";
 import LaravelPng from "../assets/Laravel.png";
 import VuePng from "../assets/Vue.png";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.css";
-// import './About.css';
 const About = () => {
   return (
     <>
@@ -41,53 +41,53 @@ const About = () => {
   );
 };
 
+const logos = [
+  { src: HtmlPng, alt: "HTML" },
+  { src: CssPng, alt: "CSS" },
+  { src: JsPng, alt: "JavaScript" },
+  { src: VuePng, alt: "Vue" },
+  { src: ReactPng, alt: "React" },
+  { src: PhpPng, alt: "PHP" },
+  { src: LaravelPng, alt: "Laravel" },
+];
+
 const Languages = () => {
+  const containerRef = useRef(null);
+  const [width, setWidth] = useState(0);
+
+  const allLogos = [...logos, ...logos, ...logos];
+
+  useEffect(() => {
+    if (containerRef.current) {
+      setWidth(containerRef.current.scrollWidth / 3); // larghezza di una sequenza
+    }
+  }, []);
+
   return (
-    <Swiper
-      spaceBetween={0}
-      slidesPerView={6}
-      loop={true}
-      autoplay={{ delay: 2500, disableOnInteraction: false }}
-      className="h-24"
-    >
-      <SwiperSlide className="h-full flex justify-center items-center">
-        <img
-          className="h-full w-auto object-contain"
-          src={HtmlPng}
-          alt="HTML"
-        />
-      </SwiperSlide>
-      <SwiperSlide className="h-full flex justify-center items-center">
-        <img className="h-full w-auto object-contain" src={CssPng} alt="CSS" />
-      </SwiperSlide>
-      <SwiperSlide className="h-full flex justify-center items-center">
-        <img
-          className="h-full w-auto object-contain"
-          src={JsPng}
-          alt="JavaScript"
-        />
-      </SwiperSlide>
-      <SwiperSlide className="h-full flex justify-center items-center">
-        <img className="h-full w-auto object-contain" src={VuePng} alt="Vue" />
-      </SwiperSlide>
-      <SwiperSlide className="h-full flex justify-center items-center">
-        <img
-          className="h-full w-auto object-contain"
-          src={ReactPng}
-          alt="React"
-        />
-      </SwiperSlide>
-      <SwiperSlide className="h-full flex justify-center items-center">
-        <img className="h-full w-auto object-contain" src={PhpPng} alt="PHP" />
-      </SwiperSlide>
-      <SwiperSlide className="h-full flex justify-center items-center">
-        <img
-          className="h-full w-auto object-contain"
-          src={LaravelPng}
-          alt="Laravel"
-        />
-      </SwiperSlide>
-    </Swiper>
+    <div className="overflow-hidden h-24 w-full flex items-center relative">
+      <motion.div
+        ref={containerRef}
+        className="flex gap-8"
+        animate={{ x: -width }}
+        transition={{
+          repeat: Infinity,
+          repeatType: "loop",
+          ease: "linear",
+          duration: 12,
+        }}
+        style={{ minWidth: "100%" }}
+      >
+        {allLogos.map((logo, idx) => (
+          <img
+            key={logo.alt + idx}
+            src={logo.src}
+            alt={logo.alt}
+            className="h-16 w-auto object-contain"
+            style={{ minWidth: "64px" }}
+          />
+        ))}
+      </motion.div>
+    </div>
   );
 };
 
