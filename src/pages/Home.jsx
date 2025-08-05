@@ -1,6 +1,7 @@
-import Card from "../components/Card";
+import Card from "../components/common/Card";
 import { useStarProjects } from "../features/projects/hooks";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { useEffect, useRef, useState } from "react";
 import Prof3 from "../assets/ImgProfilo.png";
 import cv from "../assets/Nicholas Buiatti CV.pdf";
@@ -50,7 +51,7 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
   };
 
   const getTranslate = (divider) => {
-    const maxShift = 20; // movimento massimo in px
+    const maxShift = 20;
     return ((divider - 50) / 50) * maxShift;
   };
 
@@ -60,21 +61,20 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
       className="relative w-fit h-fit select-none mx-auto"
       onMouseMove={handleMove}
       onTouchMove={handleMove}
-      animate={{ x: getTranslate(divider) }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ type: "spring", stiffness: 120, damping: 20 }}
       style={{
         userSelect: "none",
         touchAction: "none",
       }}
     >
-      {/* Immagine sotto: sempre visibile */}
       <img
         src={leftImg}
         alt={altLeft}
         className="w-auto h-auto block invert"
         draggable={false}
       />
-      {/* Immagine sopra: overflow a sinistra */}
       <img
         src={rightImg}
         alt={altRight}
@@ -90,24 +90,26 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
       />
       <div className="absolute top-0 left-0 right-0 w-full h-full z-100">
         <div className="flex justify-between items-center h-full">
-          <h2
-            className=""
+          <motion.h2
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: divider / 100 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             style={{
-              opacity: divider / 100,
               transition: "opacity 0.2s",
             }}
           >
             Back-End
-          </h2>
-          <h2
-            className=""
+          </motion.h2>
+          <motion.h2
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 - divider / 100 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             style={{
-              opacity: 1 - divider / 100,
               transition: "opacity 0.2s",
             }}
           >
             Front-End
-          </h2>
+          </motion.h2>
         </div>
       </div>
       <div
@@ -120,10 +122,13 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
 
 const StarProjects = () => {
   const { data: starProjects, isLoading, error } = useStarProjects();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: "-100px",
+  });
 
   if (isLoading) return <div>Caricamento...</div>;
   if (error) return <div>Errore nel caricamento</div>;
-  console.log(starProjects);
 
   return (
     <section className="relative mx-auto mt-16">
@@ -131,23 +136,25 @@ const StarProjects = () => {
         <hr className="flex-1 border-gray-200" />
         <h1 className="mx-5 text-2xl whitespace-nowrap">Progetti in rilievo</h1>
         <hr className="flex-1 border-gray-200" />
+        <p>{inView ? "In vista" : "Fuori vista"}</p>
       </div>
-      <div className="flex justify-between flex-wrap px-10">
-        <div className="relative w-full">
-          <div className="flex flex-wrap justify-center">
-            {starProjects?.length == 0 ? (
-              <div className="text-white">nessuna repo</div>
-            ) : (
-              starProjects?.projects.map((project) => (
-                <div key={project.id} className="w-full md:w-4/12 p-4">
-                  <Card project={project} />
-                </div>
-              ))
-            )}
-          </div>
-        </div>
+      <div className="flex flex-wrap px-10" ref={ref}>
+        {starProjects?.length == 0 ? (
+          <div className="text-white">nessuna repo</div>
+        ) : (
+          starProjects?.projects.map((project, idx) => (
+            <motion.div
+              key={project.id}
+              className="w-full md:w-6/12 xl:w-4/12 p-4"
+              initial={{ opacity: 0, x: 100 }}
+              animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+              transition={{ duration: 0.6, delay: idx * 0.15, type: "spring" }}
+            >
+              <Card project={project} />
+            </motion.div>
+          ))
+        )}
       </div>
-      {/* <pre>{JSON.stringify(favorite, null, 2)}</pre> */}
     </section>
   );
 };
