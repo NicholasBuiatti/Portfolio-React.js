@@ -1,8 +1,11 @@
-import Card from "../components/common/Card";
 import { useStarProjects } from "../features/projects/hooks";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useRef, useState } from "react";
+
+import Card from "../components/common/Card";
+import { Error, Loading } from "../components/ui/Error&Loading";
+
 import Prof3 from "../assets/ImgProfilo.png";
 import cv from "../assets/Nicholas Buiatti CV.pdf";
 
@@ -127,16 +130,27 @@ const StarProjects = () => {
     rootMargin: "-100px",
   });
 
-  if (isLoading) return <div>Caricamento...</div>;
-  if (error) return <div>Errore nel caricamento</div>;
+  if (isLoading)
+    return <Loading message="Caricamento in corso. Attendi un istante..." />;
+
+  if (error)
+    return (
+      <Error
+        message={
+          error.message ||
+          "Ops... si è verificato un errore. Contatta l'assistenza."
+        }
+      />
+    );
 
   return (
     <section className="relative mx-auto mt-16">
       <div className="flex justify-between items-center text-dark">
         <hr className="flex-1 border-gray-200" />
-        <h1 className="mx-5 text-2xl whitespace-nowrap">Progetti in rilievo</h1>
+        <h1 className="mx-5 text-2xl text-gray-700 whitespace-nowrap">
+          Progetti in rilievo
+        </h1>
         <hr className="flex-1 border-gray-200" />
-        <p>{inView ? "In vista" : "Fuori vista"}</p>
       </div>
       <div className="flex flex-wrap px-10" ref={ref}>
         {starProjects?.length == 0 ? (

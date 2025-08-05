@@ -1,6 +1,9 @@
+import { CircleAlert } from "lucide-react";
+
 export function Error({ message = "Si è verificato un errore." }) {
   return (
     <div className="bg-red-100 text-red-700 p-4 rounded mb-4 text-center">
+      <CircleAlert size={64} />
       {message}
     </div>
   );
@@ -14,4 +17,3 @@ export function Loading({ message = "Caricamento..." }) {
     </div>
   );
 }
-
