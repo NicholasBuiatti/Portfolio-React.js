@@ -12,3 +12,12 @@ export const useUiStore = create((set) => ({
   // toggleOtherDropdown: () => set((state) => ({ otherDropdown: !state.otherDropdown })), //ci fossero altri dropdown
   closeAllDropdowns: () => set({ navbarDropdown: false }), // otherDropdown: false
 }));
+
+export const useFormStore = create((set) => ({
+  formData: {},
+  setValue: (name, value) =>
+    set((state) => ({
+      formData: { ...state.formData, [name]: value },
+    })),
+  resetForm: () => set({ formData: {} }),
+}));
