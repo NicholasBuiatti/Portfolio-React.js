@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import clsx from "clsx";
 //installare con npm install clsx (comodo per la concatenazione delle classi con quelle già esistenti)
 //altrimenti uso la concatenazione con il `` e le template literals
@@ -31,3 +32,10 @@ export default function Button({
     </button>
   );
 }
+
+Button.propTypes = {
+  children: PropTypes.node.isRequest,
+  variant: PropTypes.oneOf(["primary", "secondary", "outline"]),
+  size: PropTypes.oneOf(["sm", "md", "lg"]),
+  className: PropTypes.string,
+};

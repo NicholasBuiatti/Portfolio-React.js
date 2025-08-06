@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function Switch({ checked, onChange, label }) {
   return (
     <label className="flex items-center cursor-pointer gap-2">
@@ -14,3 +16,9 @@ export default function Switch({ checked, onChange, label }) {
     </label>
   );
 }
+
+Switch.propTypes = {
+  checked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+};

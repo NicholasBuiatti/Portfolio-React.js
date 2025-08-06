@@ -1,4 +1,5 @@
-import { CircleAlert } from "lucide-react";
+import PropTypes from "prop-types";
+import { CircleAlert, Frown } from "lucide-react";
 
 export function Error({ message = "Si è verificato un errore." }) {
   return (
@@ -9,6 +10,10 @@ export function Error({ message = "Si è verificato un errore." }) {
   );
 }
 
+Error.propTypes = {
+  message: PropTypes.string,
+};
+
 export function Loading({ message = "Caricamento..." }) {
   return (
     <div className="flex flex-col items-center justify-center p-8">
@@ -17,3 +22,20 @@ export function Loading({ message = "Caricamento..." }) {
     </div>
   );
 }
+
+Loading.propTypes = {
+  message: PropTypes.string,
+};
+
+export function NoResults({ message = "Nessun risultato trovato." }) {
+  return (
+    <div className="text-center p-4 text-gray-500">
+      <Frown size={64} />
+      {message}
+    </div>
+  );
+}
+
+NoResults.propTypes = {
+  message: PropTypes.string,
+};
