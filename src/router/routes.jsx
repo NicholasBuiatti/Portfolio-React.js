@@ -16,7 +16,7 @@ export const routes = [
     id: 2,
     path: "/projects",
     element: <Projects />,
-    label: "projects",
+    label: "portfolio",
   },
   {
     path: "/projects/:slug",
