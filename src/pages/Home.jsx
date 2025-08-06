@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useRef, useState } from "react";
 
 import Card from "../components/common/Card";
-import { Error, Loading } from "../components/ui/Error&Loading";
+import { Error, Loading, NoResults } from "../components/ui/Error&Loading";
 
 import Prof3 from "../assets/ImgProfilo.png";
 import cv from "../assets/Nicholas Buiatti CV.pdf";
@@ -143,6 +143,9 @@ const StarProjects = () => {
       />
     );
 
+  if (starProjects?.projects?.length === 0)
+    return <NoResults message="Nessun progetto in evidenza al momento." />;
+
   return (
     <section className="relative mx-auto mt-16">
       <div className="flex justify-between items-center text-dark">
@@ -153,20 +156,17 @@ const StarProjects = () => {
         <hr className="flex-1 border-gray-200" />
       </div>
       <div className="flex flex-wrap px-10" ref={ref}>
-        {starProjects?.length == 0 ? (
-          <div className="text-white">nessuna repo</div>
-        ) : (
-          starProjects?.projects.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              className="w-full md:w-6/12 xl:w-4/12 p-4"
-              initial={{ opacity: 0, x: 100 }}
-              animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
-              transition={{ duration: 0.6, delay: idx * 0.15, type: "spring" }}
-            >
-              <Card project={project} />
-            </motion.div>
-          ))
+        {starProjects?.projects.map((project, idx) => (
+          <motion.div
+            key={project.id}
+            className="w-full md:w-6/12 xl:w-4/12 p-4"
+            initial={{ opacity: 0, x: 100 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+            transition={{ duration: 0.6, delay: idx * 0.15, type: "spring" }}
+          >
+            <Card project={project} />
+          </motion.div>
+        )
         )}
       </div>
     </section>

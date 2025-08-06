@@ -1,57 +1,56 @@
-import { useState } from 'react';
 import axios from 'axios';
 import Swal from "sweetalert2";
+import { Input } from '../components/ui/Input';
+import { StartingPage } from '../components/ui/StartingPage';
+import { useFormStore } from '../store/uiStore';
+import { usePostMessage } from '../features/messages/hooks';
+import { showAlert } from '../components/ui/Alert';
+
 const ContactMe = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
+    const { formData, setValue, resetForm } = useFormStore();
+    const { mutate: postMessage } = usePostMessage();
 
-    const nameChange = (event) => {
-        setName(event.target.value);
-    }
-    const emailChange = (event) => {
-        setEmail(event.target.value);
-    }
-    const messageChange = (event) => {
-        setMessage(event.target.value);
+    const handleSubmit = (formData) => {
+        postMessage(formData, {
+            onSuccess: () => showAlert({ icon: "success", title: "Messaggio inviato!", text: "Hai inviato il messaggio", footer: "Verrai ricontatto il prima possibile! GRAZIE" }),
+            onError: () => showAlert({ icon: "error", title: "Messaggio NON inviato", text: "Errore nell'invio del messaggio", footer: "Riprova o contattami a questa email exemple@hotmail.it" }),
+        })
     }
 
-    const sendMessage = async (event) => {
-        event.preventDefault();
+    // const sendMessage = async (event) => {
+    //     event.preventDefault();
 
-        const data = { name, email, message }; // Dati da inviare
+    //     try {
+    //         const response = await axios.post('http://127.0.0.1:8000/api/contacts', data, {
+    //             headers: {
+    //                 'Content-Type': 'application/json', // Imposta il tipo di contenuto come JSON
+    //             }
+    //         });
 
-        try {
-            const response = await axios.post('http://127.0.0.1:8000/api/contacts', data, {
-                headers: {
-                    'Content-Type': 'application/json', // Imposta il tipo di contenuto come JSON
-                }
-            });
+    //         if (response.status === 200) {
+    //             console.log('Messaggio inviato con successo');
+    //             showSuccessAlert();
+    //             setName('')
+    //             setEmail('')
+    //             setMessage('')
+    //         } else {
+    //             console.error('Errore nell’invio del messaggio');
+    //         }
+    //     } catch (error) {
+    //         console.error('Errore:', error);
+    //     }
+    // }
 
-            if (response.status === 200) {
-                console.log('Messaggio inviato con successo');
-                showSuccessAlert();
-                setName('')
-                setEmail('')
-                setMessage('')
-            } else {
-                console.error('Errore nell’invio del messaggio');
-            }
-        } catch (error) {
-            console.error('Errore:', error);
-        }
-    }
-
-    const showSuccessAlert = () => {
-        setTimeout(() => {
-            Swal.fire({
-                icon: "success",
-                title: "Invio riuscito",
-                text: "Hai inviato il messaggio!",
-                footer: 'Verrai ricontatto il prima possibile! GRAZIE',
-            });
-        }, 2000); // Mostra l'errore dopo 2 secondi
-    };
+    // const showSuccessAlert = () => {
+    //     setTimeout(() => {
+    //         Swal.fire({
+    //             icon: "success",
+    //             title: "Invio riuscito",
+    //             text: "Hai inviato il messaggio!",
+    //             footer: 'Verrai ricontatto il prima possibile! GRAZIE',
+    //         });
+    //     }, 2000); // Mostra l'errore dopo 2 secondi
+    // };
 
     return (
         <div className='min-h-screen'>
@@ -60,8 +59,9 @@ const ContactMe = () => {
                 <p className='mt-2 text-center text-white'>Compila il modulo qui sotto: risponderò il prima possibile per discutere insieme delle tue idee e dei tuoi progetti. Non vedo l’ora di sentirti!</p>
             </div>
 
-            <form onSubmit={sendMessage} className="container mx-auto mt-16 md:w-6/12 px-5">
-                <div className="relative z-0 w-full mb-5 group">
+            <form onSubmit={handleSubmit} className="container mx-auto mt-16 md:w-6/12 px-5">
+                <FormVisitors />
+                {/* <div className="relative z-0 w-full mb-5 group">
                     <input
                         type="text"
                         name="name"
@@ -95,10 +95,26 @@ const ContactMe = () => {
                     rows="4"
                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Lascia un commento..."
-                ></textarea>
+                ></textarea> */}
                 <button type="submit" className='text-white border-2 border-l-stone-400 rounded-md p-2 mt-5 shadow-white hover:bg-neutral-300 hover:text-black'>Invia</button>
 
             </form>
+        </div>
+    )
+}
+
+const FormVisitors = () => {
+    const { formData, setValue } = useFormStore();
+
+    return (
+        <div className='flex'>
+            <div className='md:w-1/2 p-1'>
+                <Input label="Nome*" name="name" value={formData.name} onChange={(e) => setValue('name', e.target.value)} required />
+                <Input label="Email*" type="email" name="email" value={formData.email} onChange={(e) => setValue('email', e.target.value)} required />
+            </div>
+            <div className='md:w-1/2 p-1'>
+                <Input label="Messaggio*" as="textarea" name="message" value={formData.message} onChange={(e) => setValue('message', e.target.value)} rows={4} required />
+            </div>
         </div>
     )
 }
