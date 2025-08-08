@@ -1,5 +1,4 @@
-import axios from "axios";
-import Swal from "sweetalert2";
+import PropTypes from "prop-types";
 import Input from "../components/ui/Input";
 import StartingPage from "../components/ui/StartingPage";
 import { useFormStore } from "../store/uiStore";
@@ -167,5 +166,15 @@ const SocialLink = ({
     </motion.div>
   </a>
 );
+
+SocialLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  iconClass: PropTypes.string.isRequired,
+  bgColor: PropTypes.string.isRequired,
+  hoverBgColor: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  textColor: PropTypes.string,
+  hoverTextColor: PropTypes.string,
+};
 
 export default ContactMe;
