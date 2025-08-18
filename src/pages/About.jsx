@@ -13,7 +13,7 @@ import VuePng from "../assets/Vue.png";
 const About = () => {
   return (
     <>
-      <section className="container mx-auto">
+      <section className="border-b border-gray-200">
         <StartingPage
           title="About Me"
           semiTitle="Sono un Full Stack Developer residente in un bellissimo paesino friulano."

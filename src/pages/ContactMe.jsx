@@ -36,60 +36,65 @@ const ContactMe = () => {
   };
 
   return (
-    <div className="container mx-auto min-h-screen">
-      <StartingPage
-        title="Contact."
-        semiTitle="Se hai domande, proposte o semplicemente vuoi fare due chiacchiere, non esitare a contattarmi."
-        description={
-          <div className="flex text-white">
-            <div className="w-1/2">
-              <SocialLink
-                href="https://www.instagram.com/yourusername"
-                iconClass="fa-brands fa-instagram"
-                bgColor="bg-pink-500"
-                hoverBgColor="#e11d48"
-                label="Instagram"
-              />
-              <SocialLink
-                href="https://github.com/yourusername"
-                iconClass="fa-brands fa-github"
-                bgColor="bg-gray-500"
-                hoverBgColor="#333"
-                label="GitHub"
-              />
+    <div className="min-h-screen">
+      <div className="border-b border-gray-200">
+        <StartingPage
+          title="contact."
+          semiTitle="Se hai domande, proposte o semplicemente vuoi fare due chiacchiere, non esitare a contattarmi."
+          description={
+            <div className="flex text-white">
+              <div className="w-1/2">
+                <SocialLink
+                  href="https://www.instagram.com/yourusername"
+                  iconClass="fa-brands fa-instagram"
+                  bgColor="bg-pink-500"
+                  hoverBgColor="#e11d48"
+                  label="Instagram"
+                />
+                <SocialLink
+                  href="https://github.com/yourusername"
+                  iconClass="fa-brands fa-github"
+                  bgColor="bg-gray-500"
+                  hoverBgColor="#333"
+                  label="GitHub"
+                />
+              </div>
+              <div className="w-1/2">
+                <SocialLink
+                  href="https://www.linkedin.com/in/yourusername"
+                  iconClass="fa-brands fa-linkedin-in"
+                  bgColor="bg-blue-500"
+                  hoverBgColor="#2563eb"
+                  label="LinkedIn"
+                />
+                <SocialLink
+                  href="https://twitter.com/yourusername"
+                  iconClass="fa-brands fa-twitter"
+                  bgColor="bg-blue-300"
+                  hoverBgColor="#38bdf8"
+                  label="Twitter"
+                />
+              </div>
             </div>
-            <div className="w-1/2">
-              <SocialLink
-                href="https://www.linkedin.com/in/yourusername"
-                iconClass="fa-brands fa-linkedin-in"
-                bgColor="bg-blue-500"
-                hoverBgColor="#2563eb"
-                label="LinkedIn"
-              />
-              <SocialLink
-                href="https://twitter.com/yourusername"
-                iconClass="fa-brands fa-twitter"
-                bgColor="bg-blue-300"
-                hoverBgColor="#38bdf8"
-                label="Twitter"
-              />
-            </div>
-          </div>
-        }
-        //   image={<img src={} alt="Contattami" />}
-      />
+          }
+          //   image={<img src={} alt="Contattami" />}
+        />
+      </div>
 
-      <form onSubmit={handleSubmit} className="container mx-auto mt-16">
-        <FormVisitors />
-        <div className="text-end">
-          <Button
-            type="submit"
-            text={"Invia"}
-            variant={"secondary"}
-            size="md"
-          />
-        </div>
-      </form>
+      <div className="py-1">
+        <form onSubmit={handleSubmit} className="container mx-auto mt-16">
+          <p className="text-3xl text-gray-600 mb-6">Mandami una email</p>
+          <FormVisitors />
+          <div className="text-end">
+            <Button
+              type="submit"
+              text={"Invia"}
+              variant={"secondary"}
+              size="md"
+            />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
@@ -123,7 +128,7 @@ const FormVisitors = () => {
           name="message"
           value={formData.message}
           onChange={(e) => setValue("message", e.target.value)}
-          rows={4}
+          rows={5}
           required
         />
       </div>

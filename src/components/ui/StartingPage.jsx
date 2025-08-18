@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function StartingPage({ title, semiTitle, description, image }) {
   return (
-    <div className="flex justify-between items-center py-10 border-b">
+    <div className="flex container mx-auto justify-between items-center py-10">
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}

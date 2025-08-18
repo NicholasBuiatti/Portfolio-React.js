@@ -14,7 +14,7 @@ export default function Button({
   const variants = {
     primary: "bg-blue-600 text-white hover:bg-blue-700",
     secondary: "bg-gray-800 text-black hover:bg-gray-600 text-white",
-    outline: "border border-blue-600 text-blue-600 hover:bg-blue-50",
+    outline: "border border-gray-600 text-gray-600 hover:bg-gray-200",
   };
   const sizes = {
     sm: "text-sm py-1 px-2",

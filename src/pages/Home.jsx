@@ -12,13 +12,15 @@ import cv from "../assets/Nicholas Buiatti CV.pdf";
 const Home = () => {
   return (
     <>
-      <div className="border-b border-gray-200 pt-4 shadow-md bg-white">
+      <div className="border-b border-gray-200 pt-4">
         <div className="container mx-auto">
           <Jumbotron />
         </div>
       </div>
-      <div className="container mx-auto">
-        <StarProjects />
+      <div className="py-12 bg-gray-100">
+        <div className="container mx-auto">
+          <StarProjects />
+        </div>
       </div>
     </>
   );
@@ -26,7 +28,7 @@ const Home = () => {
 
 const Jumbotron = () => {
   return (
-    <section className="bg-white">
+    <section>
       {/* <a href={cv} download={cv} className='hover:scale-105'>
                     <button className='text-3xl p-4 animate-pulse border-2 rounded-full'>CV</button>
                 </a> */}
@@ -88,7 +90,7 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
           top: 0,
           left: 0,
           clipPath: `inset(0 0 0 ${divider}%)`,
-          transition: "clip-path 2s cubic-bezier(0.4,0,0.2,1)",
+          transition: "clip-path 1s cubic-bezier(0.4,0,0.2,1)",
         }}
       />
       <div className="absolute top-0 left-0 right-0 w-full h-full z-100">
@@ -147,7 +149,7 @@ const StarProjects = () => {
     return <NoResults message="Nessun progetto in evidenza al momento." />;
 
   return (
-    <section className="relative mx-auto mt-16">
+    <section className="relative mx-auto">
       <div className="flex justify-between items-center text-dark">
         <hr className="flex-1 border-gray-200" />
         <h1 className="mx-5 text-2xl text-gray-700 whitespace-nowrap">
@@ -166,8 +168,7 @@ const StarProjects = () => {
           >
             <Card project={project} />
           </motion.div>
-        )
-        )}
+        ))}
       </div>
     </section>
   );

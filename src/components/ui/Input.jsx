@@ -1,6 +1,14 @@
 import PropTypes from "prop-types";
 
-export default function Input({ label, type = "text", value, onChange, name, as, ...props }) {
+export default function Input({
+  label,
+  type = "text",
+  value,
+  onChange,
+  name,
+  as,
+  ...props
+}) {
   const Tag = as === "textarea" ? "textarea" : "input";
 
   return (

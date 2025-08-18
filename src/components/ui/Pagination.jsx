@@ -1,21 +1,25 @@
+import Button from "./Button"; // Assicurati che il path sia corretto
+
 export default function Pagination({ currentPage, totalPages, onPageChange }) {
   return (
-    <div className="flex gap-2 justify-center mt-4">
-      <button
+    <div className="flex gap-2 justify-center items-center">
+      <Button
+        text="Prev"
+        variant="outline"
+        size="sm"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-1 border rounded disabled:opacity-50"
-      >
-        Prev
-      </button>
-      <span>{currentPage} / {totalPages}</span>
-      <button
+      />
+      <span>
+        {currentPage} / {totalPages}
+      </span>
+      <Button
+        text="Next"
+        variant="outline"
+        size="sm"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 border rounded disabled:opacity-50"
-      >
-        Next
-      </button>
+      />
     </div>
   );
 }

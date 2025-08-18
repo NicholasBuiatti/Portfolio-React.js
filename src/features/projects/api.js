@@ -1,7 +1,7 @@
 import { apiClient } from "../../lib/apiClient";
 
-export const getProjects = async () => {
-  const response = await apiClient.get("/projects");
+export const getProjects = async (page = 1) => {
+  const response = await apiClient.get(`/projects?page=${page}`);
   return response.data;
 };
 

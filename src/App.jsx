@@ -28,7 +28,7 @@ function App() {
           >
             <Navbar />
           </motion.div>
-          <div className="flex-1 bg-gray-100 pb-12">
+          <div className="flex-1">
             <Suspense>
               <LazyAppRouter />
             </Suspense>
