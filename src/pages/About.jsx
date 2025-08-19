@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import StartingPage from "../components/ui/StartingPage";
+import Section from "../components/ui/Section";
 
 import ReactPng from "../assets/React.png";
 import HtmlPng from "../assets/Html.png";
@@ -13,7 +14,7 @@ import VuePng from "../assets/Vue.png";
 const About = () => {
   return (
     <>
-      <section className="border-b border-gray-200">
+      <Section>
         <StartingPage
           title="About Me"
           semiTitle="Sono un Full Stack Developer residente in un bellissimo paesino friulano."
@@ -22,11 +23,15 @@ const About = () => {
               sono al computer puoi trovarmi in palestra, a giocare a beach
               volley o a passare del tempo con gli amici."
         />
-      </section>
+      </Section>
     </>
   );
 };
 
+export default About;
+
+
+//////////////////////////////////////////////////////// DA TOGLIERE
 const logos = [
   { src: HtmlPng, alt: "HTML" },
   { src: CssPng, alt: "CSS" },
@@ -77,4 +82,3 @@ const Languages = () => {
   );
 };
 
-export default About;

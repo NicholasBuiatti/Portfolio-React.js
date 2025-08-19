@@ -6,11 +6,12 @@ import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import StartingPage from "../components/ui/StartingPage";
 import Pagination from "../components/ui/Pagination";
+import Section from "../components/ui/Section";
 
 const Projects = () => {
   return (
     <>
-      <div className="border-b border-gray-200">
+      <Section>
         <StartingPage
           title="portfolio."
           semiTitle="Sono un Full Stack Developer residente in un bellissimo paesino friulano."
@@ -19,10 +20,8 @@ const Projects = () => {
         sono al computer puoi trovarmi in palestra, a giocare a beach
         volley o a passare del tempo con gli amici."
         />
-      </div>
-      <div className="bg-gray-100">
-        <ProjectsList />
-      </div>
+      </Section>
+      <ProjectsList />
     </>
   );
 };
