@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-export function showAlert({ icon = "success", title, text, footer }) {
+export default function showAlert({ icon = "success", title, text, footer }) {
   Swal.fire({
     icon,
     title,
