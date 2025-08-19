@@ -10,6 +10,7 @@ import JsPng from "../assets/JS.png";
 import PhpPng from "../assets/Php.png";
 import LaravelPng from "../assets/Laravel.png";
 import VuePng from "../assets/Vue.png";
+import Yoda from "../assets/yoda.jpg";
 
 const About = () => {
   return (
@@ -24,6 +25,22 @@ const About = () => {
               volley o a passare del tempo con gli amici."
         />
       </Section>
+      <div>
+        sezione a tre colonne
+      </div>
+      <Section>
+        <StartingPage
+          semiTitle="Fatti random"
+          description="Sono sempre alla ricerca di nuove tecnologie e strumenti per migliorare il mio flusso di lavoro e le mie competenze."
+          reverse={true}
+        image={<img src={Yoda} alt="Yoda" />}
+        className="pb-0"
+        />
+      </Section>
+      <StartingPage
+        semiTitle="Non lo so"
+        description="Questa è una sezione di esempio."
+      />
     </>
   );
 };
