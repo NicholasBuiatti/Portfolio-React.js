@@ -19,7 +19,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <div className="flex flex-col relative min-h-screen">
+        <div className="flex flex-col relative min-h-screen bg-gray-100">
           <motion.div
             className="bg-[#111] text-white"
             initial={{ y: -100, opacity: 0 }}
