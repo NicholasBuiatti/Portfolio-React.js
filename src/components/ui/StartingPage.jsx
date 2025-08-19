@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
-export default function StartingPage({ title, semiTitle, description, image }) {
+export default function StartingPage({ title, semiTitle, description, image, reverse = false }) {
   return (
-    <div className="flex container mx-auto justify-between items-center py-10">
+    <div
+      className={`flex container mx-auto justify-between items-center py-10 ${reverse ? "flex-row-reverse" : ""
+        }`}
+    >
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
@@ -31,4 +34,5 @@ StartingPage.propTypes = {
   semiTitle: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   image: PropTypes.element.isRequired,
+  reverse: PropTypes.bool,
 };
