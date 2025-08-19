@@ -4,7 +4,7 @@ import { getProjects, getStarProjects } from "./api";
 export const useProjects = (page) => {
   return useQuery({
     queryKey: ["projects", page],
-    queryFn: () => getProjects(page),
+    queryFn: () => getProjects({page}),
     keepPreviousData: true,
   });
 };
