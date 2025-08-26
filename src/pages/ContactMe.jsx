@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
-import Input from "../components/ui/Input";
-import StartingPage from "../components/ui/StartingPage";
 import { useFormStore } from "../store/uiStore";
 import { usePostMessage } from "../features/messages/hooks";
-import { showAlert } from "../components/ui/Alert";
 import { motion } from "framer-motion";
+import showAlert from "../components/ui/Alert";
+import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
+import StartingPage from "../components/ui/StartingPage";
+import Section from "../components/ui/Section";
 
 const ContactMe = () => {
   const { formData, resetForm } = useFormStore();
@@ -36,8 +37,8 @@ const ContactMe = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <div className="border-b border-gray-200">
+    <>
+      <Section>
         <StartingPage
           title="contact."
           semiTitle="Se hai domande, proposte o semplicemente vuoi fare due chiacchiere, non esitare a contattarmi."
@@ -77,25 +78,23 @@ const ContactMe = () => {
               </div>
             </div>
           }
-          //   image={<img src={} alt="Contattami" />}
+        //   image={<img src={} alt="Contattami" />}
         />
-      </div>
+      </Section>
 
-      <div className="py-1">
-        <form onSubmit={handleSubmit} className="container mx-auto mt-16">
-          <p className="text-3xl text-gray-600 mb-6">Mandami una email</p>
-          <FormVisitors />
-          <div className="text-end">
-            <Button
-              type="submit"
-              text={"Invia"}
-              variant={"secondary"}
-              size="md"
-            />
-          </div>
-        </form>
-      </div>
-    </div>
+      <form onSubmit={handleSubmit} className="container mx-auto my-16">
+        <p className="text-3xl text-gray-600 mb-6">Mandami una email</p>
+        <FormVisitors />
+        <div className="text-end">
+          <Button
+            type="submit"
+            text={"Invia"}
+            variant={"secondary"}
+            size="md"
+          />
+        </div>
+      </form>
+    </>
   );
 };
 

@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProjects, getStarProjects } from "./api";
 
-export const useProjects = (filters) => {
+export const useProjects = (page, filters = {}) => {
   return useQuery({
-    queryKey: ["projects", filters],
-    queryFn: () => getProjects(filters),
+    queryKey: ["projects", page, filters],
+    queryFn: () => getProjects(page, filters),
     keepPreviousData: true,
   });
 };

@@ -2,6 +2,7 @@ import { useStarProjects } from "../features/projects/hooks";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useRef, useState } from "react";
+import Section from "../components/ui/Section";
 
 import Card from "../components/common/Card";
 import { Error, Loading, NoResults } from "../components/ui/Error&Loading";
@@ -12,23 +13,17 @@ import cv from "../assets/Nicholas Buiatti CV.pdf";
 const Home = () => {
   return (
     <>
-      <div className="border-b border-gray-200 pt-4">
-        <div className="container mx-auto">
-          <Jumbotron />
-        </div>
-      </div>
-      <div className="py-12 bg-gray-100">
-        <div className="container mx-auto">
-          <StarProjects />
-        </div>
-      </div>
+      <Section>
+        <Jumbotron />
+      </Section>
+      <StarProjects />
     </>
   );
 };
 
 const Jumbotron = () => {
   return (
-    <section>
+    <section className="container mx-auto">
       {/* <a href={cv} download={cv} className='hover:scale-105'>
                     <button className='text-3xl p-4 animate-pulse border-2 rounded-full'>CV</button>
                 </a> */}
@@ -149,7 +144,7 @@ const StarProjects = () => {
     return <NoResults message="Nessun progetto in evidenza al momento." />;
 
   return (
-    <section className="relative mx-auto">
+    <section className="relative container mx-auto py-12">
       <div className="flex justify-between items-center text-dark">
         <hr className="flex-1 border-gray-200" />
         <h1 className="mx-5 text-2xl text-gray-700 whitespace-nowrap">

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import StartingPage from "../components/ui/StartingPage";
+import Section from "../components/ui/Section";
 
 import ReactPng from "../assets/React.png";
 import HtmlPng from "../assets/Html.png";
@@ -9,11 +10,12 @@ import JsPng from "../assets/JS.png";
 import PhpPng from "../assets/Php.png";
 import LaravelPng from "../assets/Laravel.png";
 import VuePng from "../assets/Vue.png";
+import Yoda from "../assets/yoda.jpg";
 
 const About = () => {
   return (
     <>
-      <section className="border-b border-gray-200">
+      <Section>
         <StartingPage
           title="About Me"
           semiTitle="Sono un Full Stack Developer residente in un bellissimo paesino friulano."
@@ -22,11 +24,31 @@ const About = () => {
               sono al computer puoi trovarmi in palestra, a giocare a beach
               volley o a passare del tempo con gli amici."
         />
-      </section>
+      </Section>
+      <div>
+        sezione a tre colonne
+      </div>
+      <Section>
+        <StartingPage
+          semiTitle="Fatti random"
+          description="Sono sempre alla ricerca di nuove tecnologie e strumenti per migliorare il mio flusso di lavoro e le mie competenze."
+          reverse={true}
+        image={<img src={Yoda} alt="Yoda" />}
+        className="pb-0"
+        />
+      </Section>
+      <StartingPage
+        semiTitle="Non lo so"
+        description="Questa è una sezione di esempio."
+      />
     </>
   );
 };
 
+export default About;
+
+
+//////////////////////////////////////////////////////// DA TOGLIERE
 const logos = [
   { src: HtmlPng, alt: "HTML" },
   { src: CssPng, alt: "CSS" },
@@ -77,4 +99,3 @@ const Languages = () => {
   );
 };
 
-export default About;

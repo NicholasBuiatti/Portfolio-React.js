@@ -1,7 +1,8 @@
 import { apiClient } from "../../lib/apiClient";
 
-export const getProjects = async (page = 1) => {
-  const response = await apiClient.get(`/projects?page=${page}`);
+export const getProjects = async (params = {}) => {
+  const query = new URLSearchParams(params).toString();
+  const response = await apiClient.get(`/projects?${query}`);
   return response.data;
 };
 
