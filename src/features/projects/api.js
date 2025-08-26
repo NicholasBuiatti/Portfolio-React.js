@@ -14,3 +14,13 @@ export const getStarProjects = async () => {
   const response = await apiClient.get("/projects/favorite");
   return response.data;
 };
+
+export const getTypes = async () => {
+  const response = await apiClient.get("/projects/types");
+  return response.data;
+};
+
+export const getLanguages = async () => {
+  const response = await apiClient.get("/projects/languages");
+  return response.data;
+};

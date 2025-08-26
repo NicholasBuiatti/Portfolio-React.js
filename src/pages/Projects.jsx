@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import StartingPage from "../components/ui/StartingPage";
 import Pagination from "../components/ui/Pagination";
+import Filter from "../features/projects/components/ProjectsFilters";
 
 const Projects = () => {
   return (
@@ -52,6 +53,9 @@ const ProjectsList = () => {
 
   return (
     <div className="container min-h-screen mx-auto pt-4">
+      <div>
+        <Filter page={currentPage} />
+      </div>
       <Pagination
         currentPage={projects.projects.current_page}
         totalPages={projects.projects.last_page}
