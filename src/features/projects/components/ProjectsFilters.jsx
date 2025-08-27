@@ -6,20 +6,16 @@ import { useState } from "react";
 import Button from "../../../components/ui/Button";
 import PropTypes from "prop-types";
 
-const ProjectsFilters = ({ page }) => {
+const ProjectsFilters = ({ setFilters }) => {
   const [form, setForm] = useState({
     name_project: "",
-    type: [],
-    language: ""
+    type_id: [],
+    language_id: "",
   });
-  const [filters, setFilters] = useState({});
-  const queryParams = { ...filters, page };
-  const { data, isLoading, error } = useProjects(queryParams);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFilters(form);
-    console.log(filters);
   };
 
   return (
@@ -30,18 +26,19 @@ const ProjectsFilters = ({ page }) => {
           name="name_project"
           placeholder="Cerca progetto..."
           value={form.name_project}
-          onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
+          onChange={(e) =>
+            setForm({ ...form, [e.target.name]: e.target.value })
+          }
         />
       </div>
 
       {/* TODO SELEZIONE MULTIPLA LATO BACKEND */}
-      <div className="w-1/2 md:w-1/6">
+      <div className="w-1/3">
         <Select
           label={"Tipo"}
           endpoint={getTypes}
-          value={form.type}
-          name="type"
-          multiple
+          value={form.type_id}
+          name="type_id"
           onChange={(e) =>
             setForm({
               ...form,
@@ -60,13 +57,15 @@ const ProjectsFilters = ({ page }) => {
         />
       </div>
 
-      <div className="w-1/2 md:w-1/6">
+      <div className="w-1/3">
         <Select
           label={"Linguaggio"}
           endpoint={getLanguages}
-          value={form.language}
-          name="language"
-          onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
+          value={form.language_id}
+          name="language_id"
+          onChange={(e) =>
+            setForm({ ...form, [e.target.name]: e.target.value })
+          }
           mapOptions={(data) =>
             data.languages.map((language) => ({
               value: language.id,
@@ -76,12 +75,8 @@ const ProjectsFilters = ({ page }) => {
         />
       </div>
       <div>
-        <Button
-          text={"Filtra"}
-          variant="outline"
-          className="mb-5"
-        />
-      </div >
+        <Button text={"Filtra"} variant="outline" className="mb-5" />
+      </div>
     </form>
   );
 };

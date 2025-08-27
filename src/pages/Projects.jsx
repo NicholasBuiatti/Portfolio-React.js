@@ -1,7 +1,7 @@
 import { useProjects } from "../features/projects/hooks";
 import { Error, Loading, NoResults } from "../components/ui/Error&Loading";
 import { useEffect, useState } from "react";
-import Card from "../components/common/Card";
+import ProjectCard from "../features/projects/components/ProjectCard";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import StartingPage from "../components/ui/StartingPage";
@@ -14,19 +14,19 @@ const Projects = () => {
     <>
       <Section>
         <div className="max-w-4xl mx-auto">
-        <StartingPage
-          title="portfolio."
-          semiTitle="Sono un Full Stack Developer residente in un bellissimo paesino friulano."
-          description="Dal 2024 ho intrapreso un percorso nel mondo dell’informatica,
+          <StartingPage
+            title="portfolio."
+            semiTitle="Sono un Full Stack Developer residente in un bellissimo paesino friulano."
+            description="Dal 2024 ho intrapreso un percorso nel mondo dell’informatica,
           dedicandomi con entusiasmo alla programmazione full stack. Se non
           sono al computer puoi trovarmi in palestra, a giocare a beach
           volley o a passare del tempo con gli amici."
           />
-          </div>
+        </div>
       </Section>
       <div className="bg-gray-100 p-10">
         <div className="max-w-4xl mx-auto">
-        <ProjectsList />
+          <ProjectsList />
         </div>
       </div>
     </>
@@ -37,7 +37,9 @@ export default Projects;
 
 const ProjectsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const { data: projects, error, isLoading } = useProjects(currentPage);
+  const [filters, setFilters] = useState({});
+  const queryParams = { ...filters, page: currentPage };
+  const { data: projects, error, isLoading } = useProjects(queryParams);
   const [ref, inView] = useInView({
     triggerOnce: true,
     rootMargin: "-100px",
@@ -55,11 +57,12 @@ const ProjectsList = () => {
         }
       />
     );
+  console.log(filters);
 
   return (
     <div className="container min-h-screen mx-auto pt-4">
       <div>
-        <Filter page={currentPage} />
+        <Filter setFilters={setFilters} />
       </div>
       <Pagination
         currentPage={projects.projects.current_page}
@@ -67,7 +70,7 @@ const ProjectsList = () => {
         onPageChange={setCurrentPage}
       />
 
-      <div className="flex justify-between flex-wrap p-6" ref={ref}>
+      <div className="flex flex-wrap pt-6" ref={ref}>
         {projects.projects.data &&
           projects.projects.data.map((project, idx) => {
             return (
@@ -82,7 +85,7 @@ const ProjectsList = () => {
                   type: "spring",
                 }}
               >
-                <Card project={project} />
+                <ProjectCard project={project} />
               </motion.div>
             );
           })}
