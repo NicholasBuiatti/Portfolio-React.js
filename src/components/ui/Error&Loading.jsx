@@ -3,9 +3,11 @@ import { CircleAlert, Frown } from "lucide-react";
 
 export function Error({ message = "Si è verificato un errore." }) {
   return (
-    <div className="bg-red-100 text-red-700 p-4 rounded mb-4 text-center">
-      <CircleAlert size={64} />
-      {message}
+    <div className="bg-red-100 text-red-700 p-4 mb-4">
+      <div className="flex flex-col items-center gap-2 mx-auto">
+        <CircleAlert size={64} />
+        <span>{message}</span>
+      </div>
     </div>
   );
 }
@@ -29,9 +31,11 @@ Loading.propTypes = {
 
 export function NoResults({ message = "Nessun risultato trovato." }) {
   return (
-    <div className="text-center p-4 text-gray-500">
-      <Frown size={64} />
-      {message}
+    <div className="bg-gray-100 text-gray-700 p-4 mb-4">
+      <div className="flex flex-col items-center gap-2 mx-auto">
+        <Frown size={64} />
+        <span>{message}</span>
+      </div>
     </div>
   );
 }
