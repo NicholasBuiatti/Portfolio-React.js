@@ -11,7 +11,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <div className="md:container relative mx-auto">
+    <div className="max-w-4xl relative mx-auto">
       <nav className="flex items-center p-4 justify-between">
         <div className="w-12">
           <img className="invert" src="/NbPortfolioLogo.png" alt="Logo" />

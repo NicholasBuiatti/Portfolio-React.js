@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useRef, useState } from "react";
 import Section from "../components/ui/Section";
 
-import Card from "../components/common/Card";
+import ProjectCard from "../features/projects/components/ProjectCard";
 import { Error, Loading, NoResults } from "../components/ui/Error&Loading";
 
 import Prova from "../assets/prova.webp";
@@ -14,12 +14,12 @@ const Home = () => {
   return (
     <>
       <Section>
-        <div className="container mx-auto">
+        <div className="max-w-4xl mx-auto">
           <Jumbotron />
         </div>
       </Section>
       <div className="p-10">
-        <div className="container mx-auto">
+        <div className="max-w-4xl mx-auto">
           <StarProjects />
         </div>
       </div>
@@ -28,9 +28,11 @@ const Home = () => {
 };
 
 const Jumbotron = () => {
-  {/* <a href={cv} download={cv} className='hover:scale-105'>
+  {
+    /* <a href={cv} download={cv} className='hover:scale-105'>
                 <button className='text-3xl p-4 animate-pulse border-2 rounded-full'>CV</button>
-            </a> */}
+            </a> */
+  }
   return (
     <ImageCompare
       leftImg={Prova}
@@ -165,7 +167,7 @@ const StarProjects = () => {
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
             transition={{ duration: 0.6, delay: idx * 0.15, type: "spring" }}
           >
-            <Card project={project} />
+            <ProjectCard project={project} />
           </motion.div>
         ))}
       </div>

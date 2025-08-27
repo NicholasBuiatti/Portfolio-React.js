@@ -12,7 +12,6 @@ export default function Select({
   multiple,
   ...props
 }) {
-
   const { data, isLoading, error } = useQuery({
     queryKey: [endpoint.name],
     queryFn: endpoint,
@@ -53,7 +52,7 @@ export default function Select({
     <div className="w-full mb-5 group">
       {label && <label className="text-gray-600">{label}</label>}
       <select
-        className="block w-1/2 border rounded-md border-gray-700 py-2.5 px-1"
+        className="block w-3/4 border rounded-md border-gray-700 py-2.5 px-1"
         onChange={onChange}
         value={value}
         name={name}
@@ -80,7 +79,9 @@ Select.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    ),
   ]),
   mapOptions: PropTypes.func,
   name: PropTypes.string,
