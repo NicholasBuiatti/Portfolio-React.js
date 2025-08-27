@@ -14,12 +14,12 @@ const Home = () => {
   return (
     <>
       <Section>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <Jumbotron />
         </div>
       </Section>
       <div className="p-10">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <StarProjects />
         </div>
       </div>

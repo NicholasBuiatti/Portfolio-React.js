@@ -13,7 +13,7 @@ const Projects = () => {
   return (
     <>
       <Section>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <StartingPage
             title="portfolio."
             semiTitle="Sono un Full Stack Developer residente in un bellissimo paesino friulano."
@@ -21,11 +21,12 @@ const Projects = () => {
           dedicandomi con entusiasmo alla programmazione full stack. Se non
           sono al computer puoi trovarmi in palestra, a giocare a beach
           volley o a passare del tempo con gli amici."
+            reverse={true}
           />
         </div>
       </Section>
       <div className="bg-gray-100 p-10">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <ProjectsList />
         </div>
       </div>
@@ -57,10 +58,9 @@ const ProjectsList = () => {
         }
       />
     );
-  console.log(filters);
 
   return (
-    <div className="container min-h-screen mx-auto pt-4">
+    <>
       <div>
         <Filter setFilters={setFilters} />
       </div>
@@ -90,6 +90,6 @@ const ProjectsList = () => {
             );
           })}
       </div>
-    </div>
+    </>
   );
 };

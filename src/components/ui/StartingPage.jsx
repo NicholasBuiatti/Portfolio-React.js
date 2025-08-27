@@ -1,27 +1,32 @@
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
-export default function StartingPage({ title, semiTitle, description, image, reverse = false }) {
+export default function StartingPage({
+  title,
+  semiTitle,
+  description,
+  image,
+  reverse = false,
+}) {
   return (
     <div
-      className={`flex flex-wrap md:flex-nowrap items-center pt-10 ${reverse ? "flex-row-reverse" : ""
-        }`}
+      className={`flex flex-wrap md:flex-nowrap items-center pt-10 ${
+        reverse ? "flex-row-reverse" : ""
+      }`}
     >
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: reverse ? 100 : -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-        className="md:w-1/2 px-10"
+        className="md:w-1/2"
       >
-        <div className="max-w-lg mx-auto">
-          {image}
-        </div>
+        <div className="max-w-lg mx-auto">{image}</div>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, x: -50 }}
+        initial={{ opacity: 0, x: reverse ? -100 : 100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-        className="md:w-1/2 px-10"
+        className="md:w-1/2"
       >
         <div className="w-3/4">
           <h1 className="text-7xl text-gray-800 font-bold mb-4">{title}</h1>

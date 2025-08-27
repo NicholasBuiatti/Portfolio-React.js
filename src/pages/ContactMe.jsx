@@ -39,9 +39,7 @@ const ContactMe = () => {
   return (
     <>
       <Section>
-        <div className="max-w-4xl mx-auto">
-
-
+        <div className="max-w-6xl mx-auto">
           <StartingPage
             title="contact."
             semiTitle="Se hai domande, proposte o semplicemente vuoi fare due chiacchiere, non esitare a contattarmi."
@@ -81,13 +79,14 @@ const ContactMe = () => {
                 </div>
               </div>
             }
-          //   image={<img src={} alt="Contattami" />}
+            reverse={true}
+            //   image={<img src={} alt="Contattami" />}
           />
         </div>
       </Section>
-      
+
       <div className="p-10">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <form onSubmit={handleSubmit} className="container mx-auto my-16">
             <p className="text-3xl text-gray-600 mb-6">Mandami una email</p>
             <FormVisitors />

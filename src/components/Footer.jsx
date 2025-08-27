@@ -7,7 +7,7 @@ const AppFooter = () => {
       className="py-12"
       style={{ boxShadow: "0 -4px 6px -1px rgba(0, 0, 0, 0.1)" }}
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="flex text-gray-400">
           <div className="w-4/12">
             <p>2025 Nicholas Buiatti</p>
