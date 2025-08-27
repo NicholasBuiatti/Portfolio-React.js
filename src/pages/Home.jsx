@@ -7,33 +7,37 @@ import Section from "../components/ui/Section";
 import Card from "../components/common/Card";
 import { Error, Loading, NoResults } from "../components/ui/Error&Loading";
 
-import Prof3 from "../assets/ImgProfilo.png";
+import Prova from "../assets/prova.webp";
 import cv from "../assets/Nicholas Buiatti CV.pdf";
 
 const Home = () => {
   return (
     <>
       <Section>
-        <Jumbotron />
+        <div className="container mx-auto">
+          <Jumbotron />
+        </div>
       </Section>
-      <StarProjects />
+      <div className="p-10">
+        <div className="container mx-auto">
+          <StarProjects />
+        </div>
+      </div>
     </>
   );
 };
 
 const Jumbotron = () => {
+  {/* <a href={cv} download={cv} className='hover:scale-105'>
+                <button className='text-3xl p-4 animate-pulse border-2 rounded-full'>CV</button>
+            </a> */}
   return (
-    <section className="container mx-auto">
-      {/* <a href={cv} download={cv} className='hover:scale-105'>
-                    <button className='text-3xl p-4 animate-pulse border-2 rounded-full'>CV</button>
-                </a> */}
-      <ImageCompare
-        leftImg={Prof3}
-        rightImg={Prof3}
-        altLeft="Left Image"
-        altRight="Right Image"
-      />
-    </section>
+    <ImageCompare
+      leftImg={Prova}
+      rightImg={Prova}
+      altLeft="Left Image"
+      altRight="Right Image"
+    />
   );
 };
 

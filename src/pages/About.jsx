@@ -10,37 +10,78 @@ import JsPng from "../assets/JS.png";
 import PhpPng from "../assets/Php.png";
 import LaravelPng from "../assets/Laravel.png";
 import VuePng from "../assets/Vue.png";
+
 import Yoda from "../assets/yoda.jpg";
 
 const About = () => {
   return (
     <>
       <Section>
-        <StartingPage
-          title="About Me"
-          semiTitle="Sono un Full Stack Developer residente in un bellissimo paesino friulano."
-          description="Dal 2024 ho intrapreso un percorso nel mondo dell’informatica,
-              dedicandomi con entusiasmo alla programmazione full stack. Se non
-              sono al computer puoi trovarmi in palestra, a giocare a beach
-              volley o a passare del tempo con gli amici."
-        />
+        <div className="max-w-6xl mx-auto">
+
+          <StartingPage
+            title="About Me"
+            semiTitle="Sono un Full Stack Developer residente in un bellissimo paesino friulano."
+            description="Dal 2024 ho intrapreso un percorso nel mondo dell’informatica,
+          dedicandomi con entusiasmo alla programmazione full stack. Se non
+          sono al computer puoi trovarmi in palestra, a giocare a beach
+          volley o a passare del tempo con gli amici."
+            reverse={true}
+          />
+        </div>
       </Section>
-      <div>
-        sezione a tre colonne
+      <div className="p-10">
+        <div className="max-w-6xl mx-auto flex items-center text-center">
+          <div className="md:w-1/3">
+            <h3 className="text-lg font-semibold">Front End</h3>
+            <ul>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>React</li>
+              <li>Vue</li>
+              <li>Bootstrap</li>
+              <li>Tailwind CSS</li>
+            </ul>
+          </div>
+          <div className="md:w-1/3">
+            <h3 className="text-lg font-semibold">Tools & Version Control</h3>
+            <ul>
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>VS Code</li>
+              <li>npm/yarn</li>
+            </ul>
+          </div>
+          <div className="md:w-1/3">
+            <h3 className="text-lg font-semibold">Back End</h3>
+            <ul>
+              <li>PHP</li>
+              <li>Laravel</li>
+              <li>MySQL</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <Section>
-        <StartingPage
-          semiTitle="Fatti random"
-          description="Sono sempre alla ricerca di nuove tecnologie e strumenti per migliorare il mio flusso di lavoro e le mie competenze."
-          reverse={true}
-        image={<img src={Yoda} alt="Yoda" />}
-        className="pb-0"
-        />
+        <div className="max-w-6xl mx-auto">
+          <StartingPage
+            semiTitle="Fatti random"
+            description="Sono sempre alla ricerca di nuove tecnologie e strumenti per migliorare il mio flusso di lavoro e le mie competenze."
+            image={<img src={Yoda} alt="Yoda" />}
+            className="pb-0"
+          />
+        </div>
       </Section>
-      <StartingPage
-        semiTitle="Non lo so"
-        description="Questa è una sezione di esempio."
-      />
+      <div className="p-10">
+        <div className="max-w-6xl mx-auto">
+          <StartingPage
+            semiTitle="Non lo so"
+            description="Questa è una sezione di esempio."
+            reverse={true}
+          />
+        </div>
+      </div>
     </>
   );
 };

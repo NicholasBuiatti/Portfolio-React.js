@@ -7,22 +7,27 @@ import { motion } from "framer-motion";
 import StartingPage from "../components/ui/StartingPage";
 import Pagination from "../components/ui/Pagination";
 import Filter from "../features/projects/components/ProjectsFilters";
+import Section from "../components/ui/Section";
 
 const Projects = () => {
   return (
     <>
-      <div className="border-b border-gray-200">
+      <Section>
+        <div className="max-w-4xl mx-auto">
         <StartingPage
           title="portfolio."
           semiTitle="Sono un Full Stack Developer residente in un bellissimo paesino friulano."
           description="Dal 2024 ho intrapreso un percorso nel mondo dell’informatica,
-        dedicandomi con entusiasmo alla programmazione full stack. Se non
-        sono al computer puoi trovarmi in palestra, a giocare a beach
-        volley o a passare del tempo con gli amici."
-        />
-      </div>
-      <div className="bg-gray-100">
+          dedicandomi con entusiasmo alla programmazione full stack. Se non
+          sono al computer puoi trovarmi in palestra, a giocare a beach
+          volley o a passare del tempo con gli amici."
+          />
+          </div>
+      </Section>
+      <div className="bg-gray-100 p-10">
+        <div className="max-w-4xl mx-auto">
         <ProjectsList />
+        </div>
       </div>
     </>
   );
@@ -82,7 +87,6 @@ const ProjectsList = () => {
             );
           })}
       </div>
-      {/* <pre>{JSON.stringify(projects, null, 2)}</pre> */}
     </div>
   );
 };

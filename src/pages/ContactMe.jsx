@@ -39,61 +39,69 @@ const ContactMe = () => {
   return (
     <>
       <Section>
-        <StartingPage
-          title="contact."
-          semiTitle="Se hai domande, proposte o semplicemente vuoi fare due chiacchiere, non esitare a contattarmi."
-          description={
-            <div className="flex text-white">
-              <div className="w-1/2">
-                <SocialLink
-                  href="https://www.instagram.com/yourusername"
-                  iconClass="fa-brands fa-instagram"
-                  bgColor="bg-pink-500"
-                  hoverBgColor="#e11d48"
-                  label="Instagram"
-                />
-                <SocialLink
-                  href="https://github.com/yourusername"
-                  iconClass="fa-brands fa-github"
-                  bgColor="bg-gray-500"
-                  hoverBgColor="#333"
-                  label="GitHub"
-                />
-              </div>
-              <div className="w-1/2">
-                <SocialLink
-                  href="https://www.linkedin.com/in/yourusername"
-                  iconClass="fa-brands fa-linkedin-in"
-                  bgColor="bg-blue-500"
-                  hoverBgColor="#2563eb"
-                  label="LinkedIn"
-                />
-                <SocialLink
-                  href="https://twitter.com/yourusername"
-                  iconClass="fa-brands fa-twitter"
-                  bgColor="bg-blue-300"
-                  hoverBgColor="#38bdf8"
-                  label="Twitter"
-                />
-              </div>
-            </div>
-          }
-        //   image={<img src={} alt="Contattami" />}
-        />
-      </Section>
+        <div className="max-w-4xl mx-auto">
 
-      <form onSubmit={handleSubmit} className="container mx-auto my-16">
-        <p className="text-3xl text-gray-600 mb-6">Mandami una email</p>
-        <FormVisitors />
-        <div className="text-end">
-          <Button
-            type="submit"
-            text={"Invia"}
-            variant={"secondary"}
-            size="md"
+
+          <StartingPage
+            title="contact."
+            semiTitle="Se hai domande, proposte o semplicemente vuoi fare due chiacchiere, non esitare a contattarmi."
+            description={
+              <div className="flex text-white">
+                <div className="w-1/2">
+                  <SocialLink
+                    href="https://www.instagram.com/yourusername"
+                    iconClass="fa-brands fa-instagram"
+                    bgColor="bg-pink-500"
+                    hoverBgColor="#e11d48"
+                    label="Instagram"
+                  />
+                  <SocialLink
+                    href="https://github.com/yourusername"
+                    iconClass="fa-brands fa-github"
+                    bgColor="bg-gray-500"
+                    hoverBgColor="#333"
+                    label="GitHub"
+                  />
+                </div>
+                <div className="w-1/2">
+                  <SocialLink
+                    href="https://www.linkedin.com/in/yourusername"
+                    iconClass="fa-brands fa-linkedin-in"
+                    bgColor="bg-blue-500"
+                    hoverBgColor="#2563eb"
+                    label="LinkedIn"
+                  />
+                  <SocialLink
+                    href="https://twitter.com/yourusername"
+                    iconClass="fa-brands fa-twitter"
+                    bgColor="bg-blue-300"
+                    hoverBgColor="#38bdf8"
+                    label="Twitter"
+                  />
+                </div>
+              </div>
+            }
+          //   image={<img src={} alt="Contattami" />}
           />
         </div>
-      </form>
+      </Section>
+      
+      <div className="p-10">
+        <div className="max-w-4xl mx-auto">
+          <form onSubmit={handleSubmit} className="container mx-auto my-16">
+            <p className="text-3xl text-gray-600 mb-6">Mandami una email</p>
+            <FormVisitors />
+            <div className="text-end">
+              <Button
+                type="submit"
+                text={"Invia"}
+                variant={"secondary"}
+                size="md"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
     </>
   );
 };
