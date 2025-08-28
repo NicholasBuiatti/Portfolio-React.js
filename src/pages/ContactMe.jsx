@@ -8,6 +8,8 @@ import Button from "../components/ui/Button";
 import StartingPage from "../components/ui/StartingPage";
 import Section from "../components/ui/Section";
 
+import Prova from "../assets/prova.webp";
+
 const ContactMe = () => {
   const { formData, resetForm } = useFormStore();
   const { mutate: postMessage } = usePostMessage();
@@ -79,8 +81,7 @@ const ContactMe = () => {
                 </div>
               </div>
             }
-            reverse={true}
-            //   image={<img src={} alt="Contattami" />}
+            image={<img src={Prova} alt="Contattami" />}
           />
         </div>
       </Section>
@@ -109,8 +110,8 @@ const FormVisitors = () => {
   const { formData, setValue } = useFormStore();
 
   return (
-    <div className="flex">
-      <div className="md:w-1/2 p-1">
+    <div className="flex flex-wrap">
+      <div className="w-full md:w-1/2 p-1">
         <Input
           label="Nome*"
           name="name"
@@ -127,7 +128,7 @@ const FormVisitors = () => {
           required
         />
       </div>
-      <div className="md:w-1/2 p-1">
+      <div className="w-full md:w-1/2 p-1">
         <Input
           label="Messaggio*"
           as="textarea"
@@ -153,7 +154,7 @@ const SocialLink = ({
 }) => (
   <a href={href} target="_blank" rel="noopener noreferrer">
     <motion.div
-      className="py-4 flex items-center cursor-pointer"
+      className="py-4 flex items-center cursor-pointer justify-center md:justify-start"
       whileHover="hover"
     >
       <motion.i
