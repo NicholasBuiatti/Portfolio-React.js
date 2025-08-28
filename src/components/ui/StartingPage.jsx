@@ -20,7 +20,11 @@ export default function StartingPage({
         transition={{ duration: 1 }}
         className="md:w-1/2"
       >
-        <div className="max-w-lg mx-auto">{image}</div>
+        <div className="text-center md:w-3/4 md:text-start mb-5">
+          <h1 className="text-7xl text-gray-800 font-bold mb-4">{title}</h1>
+          <h3 className="text-xl text-gray-500 mb-2">{semiTitle}</h3>
+          <p className="text-sm md:text-base">{description}</p>
+        </div>
       </motion.div>
       <motion.div
         initial={{ opacity: 0, x: reverse ? -100 : 100 }}
@@ -28,11 +32,7 @@ export default function StartingPage({
         transition={{ duration: 1 }}
         className="md:w-1/2"
       >
-        <div className="w-3/4">
-          <h1 className="text-7xl text-gray-800 font-bold mb-4">{title}</h1>
-          <h3 className="text-xl text-gray-500 mb-2">{semiTitle}</h3>
-          <p className="text-sm md:text-base">{description}</p>
-        </div>
+        <div className="max-w-lg mx-auto">{image}</div>
       </motion.div>
     </div>
   );
