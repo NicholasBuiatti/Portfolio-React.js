@@ -1,19 +1,22 @@
 import { motion } from "framer-motion";
 
-const Card = ({children, image}) => {
+const Card = ({children, image, className="", inView = true, delay = 0}) => {
   return (
     <motion.div
-      className="overflow-hidden bg-white rounded-lg shadow-sm p-2"
-      initial="rest"
-      whileHover="hover"
-      animate="rest"
-      variants={{
-        rest: { boxShadow: "0 1px 8px 0 rgba(0,0,0,0.08)" },
-        hover: { boxShadow: "0 4px 32px 0 rgba(0,0,0,0.10)" },
+      className={`overflow-hidden bg-white rounded-lg shadow-sm inline-block p-2 ${className}`}
+      initial={{ opacity: 0, x: 100, boxShadow: "0 1px 8px 0 rgba(0,0,0,0.08)" }}
+      animate={inView ? 
+        { opacity: 1, x: 0, boxShadow: "0 1px 8px 0 rgba(0,0,0,0.08)" } : 
+        { opacity: 0, x: 100, boxShadow: "0 1px 8px 0 rgba(0,0,0,0.08)" }
+      }
+      whileHover={{ boxShadow: "0 4px 32px 0 rgba(0,0,0,0.10)" }}
+      transition={{
+        duration: 1,
+        delay: delay,
+        type: "spring",
       }}
-      transition={{ duration: 0.4, type: "tween" }}
     >
-      {image && <img src={image} className="rounded-md w-full" alt="" />}
+      {image && <img src={image} className="rounded-md h-32 object-contain" alt="" />}
       {children}
     </motion.div>
   );
