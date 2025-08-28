@@ -18,7 +18,7 @@ export default function StartingPage({
         initial={{ opacity: 0, x: reverse ? 100 : -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-        className="md:w-1/2"
+        className="w-full md:w-1/2"
       >
         <div className="text-center md:w-3/4 md:text-start mb-5">
           <h1 className="text-7xl text-gray-800 font-bold mb-4">{title}</h1>
@@ -30,7 +30,7 @@ export default function StartingPage({
         initial={{ opacity: 0, x: reverse ? -100 : 100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-        className="md:w-1/2"
+        className="w-full md:w-1/2"
       >
         <div className="max-w-lg mx-auto">{image}</div>
       </motion.div>
