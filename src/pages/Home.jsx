@@ -1,7 +1,7 @@
 import { useStarProjects } from "../features/projects/hooks";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Section from "../components/ui/Section";
 
 import ProjectCard from "../features/projects/components/ProjectCard";
@@ -9,7 +9,7 @@ import { Error, Loading, NoResults } from "../components/ui/Error&Loading";
 
 import Prova from "../assets/prova.webp";
 import cv from "../assets/Nicholas Buiatti CV.pdf";
-
+import Prof3 from "../assets/prof3.png";
 const Home = () => {
   return (
     <>
@@ -19,7 +19,7 @@ const Home = () => {
         </div>
       </Section>
       <div className="p-10">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto h-64">
           <StarProjects />
         </div>
       </div>
@@ -35,8 +35,8 @@ const Jumbotron = () => {
   }
   return (
     <ImageCompare
-      leftImg={Prova}
-      rightImg={Prova}
+      leftImg={Prof3}
+      rightImg={Prof3}
       altLeft="Left Image"
       altRight="Right Image"
     />
@@ -49,6 +49,30 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
   const containerRef = useRef(null);
   const [divider, setDivider] = useState(50);
 
+  const backendTechs = [
+    "PHP", "Laravel", "Node.js", "Express", "Python", "Django", "Flask",
+    "Java", "Spring Boot", "C#", ".NET", "Ruby", "Rails", "Go", "Fiber",
+    "Rust", "Actix", "MySQL", "PostgreSQL", "MongoDB", "Redis", "Docker"
+  ];
+  const frontendTechs = [
+    "HTML", "CSS", "JavaScript", "TypeScript", "React", "Vue.js", "Angular",
+    "Svelte", "Next.js", "Nuxt.js", "Gatsby", "Bootstrap", "Tailwind CSS",
+    "Sass", "Less", "jQuery", "Alpine.js", "Webpack", "Vite", "Parcel",
+    "Figma", "Adobe XD"
+  ];
+
+  const generateRandomTechs = (array) => {
+    const grandezza = ["text-base", "text-xl", "text-3xl"];
+    const rimescolo = [...array].sort(() => 0.5 - Math.random());
+    return rimescolo.slice(0, 15).map((tech) => ({
+      name: tech,
+      size: grandezza[Math.floor(Math.random() * grandezza.length)]
+    }));
+  };
+
+  const [randomBackendTechs] = useState(generateRandomTechs(backendTechs));
+  const [randomFrontendTechs] = useState(generateRandomTechs(frontendTechs));
+
   const handleMove = (e) => {
     const rect = containerRef.current.getBoundingClientRect();
     const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
@@ -56,15 +80,11 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
     setDivider(percent);
   };
 
-  const getTranslate = (divider) => {
-    const maxShift = 20;
-    return ((divider - 50) / 50) * maxShift;
-  };
-
+  //VALUTARE L'ALTEZZA FISSA IN BASE ALL'IMMAGINE CHE INSERISCO 
   return (
     <motion.div
       ref={containerRef}
-      className="relative w-fit h-fit select-none mx-auto"
+      className="relative h-96 select-none mx-auto"
       onMouseMove={handleMove}
       onTouchMove={handleMove}
       initial={{ opacity: 0 }}
@@ -78,44 +98,56 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
       <img
         src={leftImg}
         alt={altLeft}
-        className="w-auto h-auto block invert"
+        className="w-auto h-full block invert mx-auto relative z-50"
         draggable={false}
       />
       <img
         src={rightImg}
         alt={altRight}
-        className="w-auto h-auto block absolute insert-0 top-0 left-0"
+        className="w-auto h-full block z-50"
         draggable={false}
         style={{
           position: "absolute",
-          top: 0,
-          left: 0,
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
           clipPath: `inset(0 0 0 ${divider}%)`,
-          transition: "clip-path 1s cubic-bezier(0.4,0,0.2,1)",
         }}
       />
-      <div className="absolute top-0 left-0 right-0 w-full h-full z-100">
+      <div className="absolute top-0 left-0 right-0 w-full h-full">
         <div className="flex justify-between items-center h-full">
-          <motion.h2
+          <motion.div
+            className="w-full h-full flex flex-col justify-between"
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: divider / 100 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{
-              transition: "opacity 0.2s",
-            }}
+            transition={{ duration: 0.1, ease: "easeOut" }}
           >
-            Back-End
-          </motion.h2>
-          <motion.h2
+            <div></div>
+            <h2 className="text-6xl">Back-End</h2>
+            <div className="flex flex-wrap-reverse">
+              {randomBackendTechs.map((tech, index) => (
+                <span key={index} className={`${tech.size} text-gray-600 opacity-75`}>
+                  {tech.name}{index < randomBackendTechs.length - 1 ? " • " : ""}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+          <motion.div
+            className="w-full h-full text-end flex flex-col justify-between"
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 - divider / 100 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{
-              transition: "opacity 0.2s",
-            }}
+            transition={{ duration: 0.1, ease: "easeOut" }}
           >
-            Front-End
-          </motion.h2>
+            <div></div>
+            <h2 className="text-6xl">Front-End</h2>
+            <div className="flex flex-wrap-reverse justify-end">
+              {randomFrontendTechs.map((tech, index) => (
+                <span key={index} className={`${tech.size} text-gray-600 opacity-75`}>
+                  {tech.name}{index < randomFrontendTechs.length - 1 ? " • " : ""}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
       <div
