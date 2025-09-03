@@ -1,8 +1,8 @@
-import { useUIStore } from "../../store/uiStore";
+import { useUiStore } from "../../store/uiStore";
 import { Moon, Sun } from "lucide-react";
 
 export default function ThemeToggle() {
-  const { isDarkMode, toggleDarkMode } = useUIStore();
+  const { isDarkMode, toggleDarkMode } = useUiStore();
 
   return (
     <button
