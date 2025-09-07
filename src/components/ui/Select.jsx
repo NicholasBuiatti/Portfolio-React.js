@@ -52,7 +52,7 @@ export default function Select({
     <div className="w-full mb-5 group">
       {label && <label className="text-gray-600">{label}</label>}
       <select
-        className="block w-3/4 border rounded-md border-gray-700 py-2.5 px-1"
+        className="block w-full border rounded-md border-gray-700 py-2.5 px-1"
         onChange={onChange}
         value={value}
         name={name}

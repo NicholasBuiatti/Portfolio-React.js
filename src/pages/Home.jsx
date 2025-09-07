@@ -8,8 +8,8 @@ import ProjectCard from "../features/projects/components/ProjectCard";
 import { Error, Loading, NoResults } from "../components/ui/Error&Loading";
 
 import Prova from "../assets/prova.webp";
-import cv from "../assets/Nicholas Buiatti CV.pdf";
-import Prof3 from "../assets/prof3.png";
+// import cv from "../assets/Nicholas Buiatti CV.pdf";
+
 const Home = () => {
   return (
     <>
@@ -35,8 +35,8 @@ const Jumbotron = () => {
   }
   return (
     <ImageCompare
-      leftImg={Prof3}
-      rightImg={Prof3}
+      leftImg={Prova}
+      rightImg={Prova}
       altLeft="Left Image"
       altRight="Right Image"
     />
@@ -50,15 +50,52 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
   const [divider, setDivider] = useState(50);
 
   const backendTechs = [
-    "PHP", "Laravel", "Node.js", "Express", "Python", "Django", "Flask",
-    "Java", "Spring Boot", "C#", ".NET", "Ruby", "Rails", "Go", "Fiber",
-    "Rust", "Actix", "MySQL", "PostgreSQL", "MongoDB", "Redis", "Docker"
+    "PHP",
+    "Laravel",
+    "Node.js",
+    "Express",
+    "Python",
+    "Django",
+    "Flask",
+    "Java",
+    "Spring Boot",
+    "C#",
+    ".NET",
+    "Ruby",
+    "Rails",
+    "Go",
+    "Fiber",
+    "Rust",
+    "Actix",
+    "MySQL",
+    "PostgreSQL",
+    "MongoDB",
+    "Redis",
+    "Docker",
   ];
   const frontendTechs = [
-    "HTML", "CSS", "JavaScript", "TypeScript", "React", "Vue.js", "Angular",
-    "Svelte", "Next.js", "Nuxt.js", "Gatsby", "Bootstrap", "Tailwind CSS",
-    "Sass", "Less", "jQuery", "Alpine.js", "Webpack", "Vite", "Parcel",
-    "Figma", "Adobe XD"
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Vue.js",
+    "Angular",
+    "Svelte",
+    "Next.js",
+    "Nuxt.js",
+    "Gatsby",
+    "Bootstrap",
+    "Tailwind CSS",
+    "Sass",
+    "Less",
+    "jQuery",
+    "Alpine.js",
+    "Webpack",
+    "Vite",
+    "Parcel",
+    "Figma",
+    "Adobe XD",
   ];
 
   const generateRandomTechs = (array) => {
@@ -66,7 +103,7 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
     const rimescolo = [...array].sort(() => 0.5 - Math.random());
     return rimescolo.slice(0, 15).map((tech) => ({
       name: tech,
-      size: grandezza[Math.floor(Math.random() * grandezza.length)]
+      size: grandezza[Math.floor(Math.random() * grandezza.length)],
     }));
   };
 
@@ -80,7 +117,7 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
     setDivider(percent);
   };
 
-  //VALUTARE L'ALTEZZA FISSA IN BASE ALL'IMMAGINE CHE INSERISCO 
+  //VALUTARE L'ALTEZZA FISSA IN BASE ALL'IMMAGINE CHE INSERISCO
   return (
     <motion.div
       ref={containerRef}
@@ -126,8 +163,12 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
             <h2 className="text-6xl">Back-End</h2>
             <div className="flex flex-wrap-reverse">
               {randomBackendTechs.map((tech, index) => (
-                <span key={index} className={`${tech.size} text-gray-600 opacity-75`}>
-                  {tech.name}{index < randomBackendTechs.length - 1 ? " • " : ""}
+                <span
+                  key={index}
+                  className={`${tech.size} text-gray-600 opacity-75`}
+                >
+                  {tech.name}
+                  {index < randomBackendTechs.length - 1 ? " • " : ""}
                 </span>
               ))}
             </div>
@@ -142,8 +183,12 @@ const ImageCompare = ({ leftImg, rightImg, altLeft = "", altRight = "" }) => {
             <h2 className="text-6xl">Front-End</h2>
             <div className="flex flex-wrap-reverse justify-end">
               {randomFrontendTechs.map((tech, index) => (
-                <span key={index} className={`${tech.size} text-gray-600 opacity-75`}>
-                  {tech.name}{index < randomFrontendTechs.length - 1 ? " • " : ""}
+                <span
+                  key={index}
+                  className={`${tech.size} text-gray-600 opacity-75`}
+                >
+                  {tech.name}
+                  {index < randomFrontendTechs.length - 1 ? " • " : ""}
                 </span>
               ))}
             </div>

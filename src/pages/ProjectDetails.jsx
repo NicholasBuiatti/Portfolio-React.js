@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Error, Loading } from "../components/ui/Error&Loading";
 import Section from "../components/ui/Section";
 import StartingPage from "../components/ui/StartingPage";
+import CarouselProject from "../features/projects/components/CarouselProject";
 import moment from "moment";
 
 const ProjectDetails = () => {
@@ -28,53 +29,69 @@ const ProjectDetails = () => {
   return (
     <div className="min-h-screen">
       <Section>
-        <StartingPage
-          title={
-            <>
-              {data.project.name_project}
-              <hr />
-            </>
-          }
-          semiTitle={
-            <div className="flex justify-between">
-              <div>{data.project.type ? data.project.type.name : "N/A"}</div>
-              <div>
-                {data.project.date
-                  ? moment(data.project.date).format("DD/MM/YYYY")
-                  : "N/A"}
+        <div className="container mx-auto">
+          <StartingPage
+            title={
+              <>
+                {data.project.name_project}
+                <hr />
+              </>
+            }
+            semiTitle={
+              <div className="flex justify-between">
+                <div>{data.project.type ? data.project.type.name : "N/A"}</div>
+                <div>
+                  {data.project.date
+                    ? moment(data.project.date).format("DD/MM/YYYY")
+                    : "N/A"}
+                </div>
               </div>
-            </div>
-          }
-          description={data.project.description}
-          // <p className="mb-2"><strong>GitHub URL:</strong> <a href={data.git_URL} className="text-blue-400 underline" target="_blank" rel="noopener noreferrer">View Project</a></p>
-          // <div className="mt-4">
-          //                   <strong>Linguaggi usati:</strong>
-          //                   <ul className="list-disc list-inside mt-2">
-          //                       {data.languages ?
-          //                           data.languages.map((language, index) => (
-          //                               <li key={language.id} className="text-gray-300 relative">
-          //                                   <span onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave} className="cursor-pointer">
-          //                                       {language.name}
-          //                                   </span>
-          //                               </li>
-          //                           ))
-          //                           : 'N/A'
-          //                       }
-
-          //                   </ul>
-          //               </div>
-          image={
-            <img
-              src={data.project.img}
-              className="rounded-2xl object-cover h-full w-full"
-              alt={data.project.name_project}
-            />
-          }
-        />
+            }
+            description={
+              <>
+                <div>{data.project.description}</div>
+                <hr />
+                <div className="mt-4 flex justify-between">
+                  <ul className="list-disc list-inside mt-2 col-4">
+                    {data.project.languages
+                      ? data.project.languages.map((language, index) => (
+                          <li
+                            key={language.id}
+                            className="text-gray-600 relative"
+                          >
+                            <span>{language.name}</span>
+                          </li>
+                        ))
+                      : "N/A"}
+                  </ul>
+                  <div className="col-8">
+                    <p className="mb-2">
+                      <a
+                        href={data.project.git_URL}
+                        className="text-blue-400 underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        GitHub project
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </>
+            }
+            image={
+              <img
+                src={data.project.img}
+                className="rounded-2xl object-cover h-full w-full"
+                alt={data.project.name_project}
+              />
+            }
+          />
+        </div>
       </Section>
 
       {/* TODO INSERIRE CAROSELLO PER POTER VEDERE LE VARIE IMMAGINI SALVATE DEI PROGETTI */}
-      
+      <CarouselProject images={data.project.images} />
     </div>
   );
 };

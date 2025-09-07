@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useUiStore } from "../store/uiStore"; // Import the store
 import { SocialLinks } from "./common/SocialLinks";
-import ThemeToggle from "./ui/ThemeToggle";
 
 const Navbar = () => {
   const { navbarDropdown, toggleNavbarDropdown, closeAllDropdowns } =
@@ -15,8 +14,6 @@ const Navbar = () => {
       <nav className="flex items-center p-4 justify-between">
         <div className="w-12">
           <img className="invert" src="/NbPortfolioLogo.png" alt="Logo" />
-          <ThemeToggle />
-          {/* da capire dove mettere */}
         </div>
         <ul className="hidden md:flex w-9/12 md:w-6/12 justify-end ms-auto">
           {routes

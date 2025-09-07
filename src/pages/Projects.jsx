@@ -21,7 +21,6 @@ const Projects = () => {
           dedicandomi con entusiasmo alla programmazione full stack. Se non
           sono al computer puoi trovarmi in palestra, a giocare a beach
           volley o a passare del tempo con gli amici."
-            reverse={true}
           />
         </div>
       </Section>

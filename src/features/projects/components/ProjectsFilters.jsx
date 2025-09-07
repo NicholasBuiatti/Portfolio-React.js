@@ -20,7 +20,7 @@ const ProjectsFilters = ({ setFilters }) => {
 
   return (
     <form onSubmit={handleSubmit} className="flex justify-between items-end">
-      <div className="md:w-1/3">
+      <div className="md:w-1/3 px-2">
         <Input
           label={"Nome Progetto"}
           name="name_project"
@@ -33,7 +33,7 @@ const ProjectsFilters = ({ setFilters }) => {
       </div>
 
       {/* TODO SELEZIONE MULTIPLA LATO BACKEND */}
-      <div className="w-1/3">
+      <div className="w-1/3 px-2">
         <Select
           label={"Tipo"}
           endpoint={getTypes}
@@ -57,7 +57,7 @@ const ProjectsFilters = ({ setFilters }) => {
         />
       </div>
 
-      <div className="w-1/3">
+      <div className="w-1/3 px-2">
         <Select
           label={"Linguaggio"}
           endpoint={getLanguages}
