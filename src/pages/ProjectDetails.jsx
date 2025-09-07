@@ -29,7 +29,7 @@ const ProjectDetails = () => {
   return (
     <div className="min-h-screen">
       <Section>
-        <div className="container mx-auto">
+        <div className="max-w-6xl mx-auto">
           <StartingPage
             title={
               <>
